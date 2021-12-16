@@ -1,0 +1,24 @@
+from cytomat_python.serial_port import SerialPort
+from cytomat_python.status import OverviewStatus
+
+
+class MaintenanceController:
+    __serial_port: SerialPort
+
+    def __init__(self, serial_port: SerialPort) -> None:
+        self.__serial_port = serial_port
+
+    def reset_error_status(self) -> OverviewStatus:
+        return self.__serial_port.issue_action_command("rs:be")
+
+    def restart_device(self) -> OverviewStatus:
+        return self.__serial_port.issue_action_command("se:ns")
+
+    def set_pitch(self, stacker: int, pitch: int) -> OverviewStatus:
+        return self.__serial_port.issue_action_command(f"se:cs {stacker:03} {pitch:03}")
+
+    def send_barcode_scanner_data_via_rs232(self) -> OverviewStatus:
+        return self.__serial_port.issue_action_command("se:c1")
+
+    def send_temperate_co2_via_rs232(self) -> OverviewStatus:
+        return self.__serial_port.issue_action_command("se:c2")
