@@ -26,11 +26,11 @@ class Cytomat:
         else:
             self.__serial_port = serial_port
 
-        self.plate_handler = PlateHandler(serial_port)
-        self.barcode_scanner = BarcodeScanner(serial_port)
-        self.maintenance_controller = MaintenanceController(serial_port)
-        self.climate_controller = ClimateController(serial_port)
-        self.shaker_controller = ShakerController(serial_port)
+        self.plate_handler = PlateHandler(self.__serial_port)
+        self.barcode_scanner = BarcodeScanner(self.__serial_port)
+        self.maintenance_controller = MaintenanceController(self.__serial_port)
+        self.climate_controller = ClimateController(self.__serial_port)
+        self.shaker_controller = ShakerController(self.__serial_port)
 
     @property
     def overview_status(self) -> OverviewStatus:
