@@ -86,9 +86,8 @@ class ActionType(IntEnum):
 
 
 class ActionTarget(IntEnum):
-    # values are guessed, since the documentation is inconsistent
     InitPosition = 1
-    WaitingPosition = 2
+    WaitPosition = 2
     Stacker = 3
     TransferStation = 4
 
