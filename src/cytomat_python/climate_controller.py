@@ -9,11 +9,11 @@ class ClimateController:
 
     @property
     def current_temperature(self) -> float:
-        return float(self.__serial_port.issue_status_command("ch:it").split()[0])
+        return float(self.__serial_port.issue_status_command("ch:it").split()[1])
 
     @property
     def target_temperature(self) -> float:
-        return float(self.__serial_port.issue_status_command("ch:it").split()[1])
+        return float(self.__serial_port.issue_status_command("ch:it").split()[0])
 
     @target_temperature.setter
     def target_temperature(self, target: float) -> None:
@@ -23,11 +23,11 @@ class ClimateController:
 
     @property
     def current_co2(self) -> float:
-        return float(self.__serial_port.issue_status_command("ch:ic").split()[0])
+        return float(self.__serial_port.issue_status_command("ch:ic").split()[1])
 
     @property
     def target_co2(self) -> float:
-        return float(self.__serial_port.issue_status_command("ch:ic").split()[1])
+        return float(self.__serial_port.issue_status_command("ch:ic").split()[0])
 
     @target_co2.setter
     def target_co2(self, target: float) -> None:
