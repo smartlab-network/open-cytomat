@@ -11,6 +11,7 @@ class InvalidCommand(Exception):
 
 class SerialCommunicationError(Exception):
     """Errors corresponding to device responses 'er XX'"""
+
     @staticmethod
     def from_error_code(code: int) -> SerialCommunicationError:
         error_code_mapping = {
@@ -30,7 +31,7 @@ class SerialCommunicationError(Exception):
             0x42: TransferDoorNotOpen,
             0x51: InternalMemoryAccessError,
             0x52: UnauthorizedAccess,
-            0x61: ShakerNotActive
+            0x61: ShakerNotActive,
         }
         try:
             return error_code_mapping[code]()

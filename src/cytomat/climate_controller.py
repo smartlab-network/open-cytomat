@@ -1,4 +1,4 @@
-from cytomat_python.serial_port import SerialPort
+from cytomat.serial_port import SerialPort
 
 
 class ClimateController:

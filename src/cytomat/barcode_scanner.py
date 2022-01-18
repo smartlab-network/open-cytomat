@@ -1,5 +1,5 @@
-from cytomat_python.serial_port import SerialPort
-from cytomat_python.status import OverviewStatus
+from cytomat.serial_port import SerialPort
+from cytomat.status import OverviewStatus
 
 
 class BarcodeScanner:

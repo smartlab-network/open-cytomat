@@ -1,0 +1,7 @@
+image: python:3.7
+
+codequality:
+  stage: test
+  script:
+    - python -m pip install .[dev]
+    - ./pre-commit

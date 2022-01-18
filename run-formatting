@@ -1,0 +1,10 @@
+#!/bin/bash
+
+set -ex
+
+python -m isort .
+python -m black .
+python -m isort --check-only .
+python -m black --check .
+python -m pflake8 .
+python -m mypy .

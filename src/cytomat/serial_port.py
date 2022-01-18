@@ -3,9 +3,9 @@ from threading import Lock
 
 from serial import Serial
 
-from cytomat_python.errors import UnexpectedResponse, InvalidCommand, SerialCommunicationError
-from cytomat_python.status import OverviewStatus
-from cytomat_python.utils import lock_threading_lock
+from cytomat.errors import InvalidCommand, SerialCommunicationError, UnexpectedResponse
+from cytomat.status import OverviewStatus
+from cytomat.utils import lock_threading_lock
 
 
 class SerialPort:
@@ -61,8 +61,7 @@ class SerialPort:
                     raise TimeoutError(rf"Did not receive a '\r'-terminated response after {self.__timeout} seconds")
                 response += char
 
-        response = response[:-1].decode("ascii")
-        return response
+        return response[:-1].decode("ascii")
 
     @staticmethod
     def __check_prefix_and_strip(response: str, expected_prefix: str) -> str:
@@ -87,7 +86,7 @@ class SerialPort:
             If the prefix did not match
         """
         if response.startswith(expected_prefix):
-            return response[len(expected_prefix):].strip()
+            return response[len(expected_prefix) :].strip()
         raise UnexpectedResponse(f"Expected response prefix '{expected_prefix}', got response '{response}'")
 
     def issue_action_command(self, command: str) -> OverviewStatus:

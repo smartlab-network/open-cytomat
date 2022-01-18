@@ -1,13 +1,13 @@
 from contextlib import contextmanager
 from enum import IntEnum
 from threading import Lock
-from typing import Type, Dict, TypeVar
+from typing import Dict, Iterator, Type, TypeVar
 
 GenericIntEnum = TypeVar("GenericIntEnum", bound=IntEnum)
 
 
 @contextmanager
-def lock_threading_lock(lock: Lock, *, timeout: float) -> None:
+def lock_threading_lock(lock: Lock, *, timeout: float) -> Iterator[None]:
     """Context manager for using a `threading.lock` with a timeout"""
     if not timeout > 0:
         raise ValueError("Timeout must be positive")

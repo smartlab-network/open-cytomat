@@ -1,15 +1,15 @@
-from datetime import datetime, timedelta
 import time
+from datetime import datetime, timedelta
 from typing import Union
 
-from cytomat_python.barcode_scanner import BarcodeScanner
-from cytomat_python.climate_controller import ClimateController
-from cytomat_python.maintenance_controller import MaintenanceController
-from cytomat_python.plate_handler import PlateHandler
-from cytomat_python.serial_port import SerialPort
-from cytomat_python.shaker_controller import ShakerController
-from cytomat_python.status import OverviewStatus, ErrorStatus, WarningStatus, ActionStatus
-from cytomat_python.utils import enum_to_dict
+from cytomat.barcode_scanner import BarcodeScanner
+from cytomat.climate_controller import ClimateController
+from cytomat.maintenance_controller import MaintenanceController
+from cytomat.plate_handler import PlateHandler
+from cytomat.serial_port import SerialPort
+from cytomat.shaker_controller import ShakerController
+from cytomat.status import ActionStatus, ErrorStatus, OverviewStatus, WarningStatus
+from cytomat.utils import enum_to_dict
 
 
 class Cytomat:
@@ -43,7 +43,7 @@ class Cytomat:
     @property
     def error_status(self) -> ErrorStatus:
         return enum_to_dict(ErrorStatus)[int(self.__serial_port.issue_status_command("ch:be"), base=16)]
-    
+
     @property
     def warning_status(self) -> WarningStatus:
         return enum_to_dict(WarningStatus)[int(self.__serial_port.issue_status_command("ch:bw"), base=16)]

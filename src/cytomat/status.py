@@ -3,8 +3,9 @@ from __future__ import annotations
 from enum import IntEnum
 from typing import NamedTuple
 
-from bitarray.util import hex2ba, ba2int
-from cytomat_python.utils import enum_to_dict
+from bitarray.util import ba2int, hex2ba
+
+from cytomat.utils import enum_to_dict
 
 
 class OverviewStatus(NamedTuple):
@@ -68,12 +69,12 @@ class ActionType(IntEnum):
     ExtendShovel = 0x07
     CheckExtendedShovel = 0x08
     CheckShovelExtensionSensor = 0x09
-    RetractShovel = 0x0a
-    CheckRetractedShovel = 0x0b
-    CloseTransferDoor = 0x0c
-    CheckTransferDoorClosed = 0x0d
-    OpenTransferDoor = 0x0e
-    CheckTransferDoorOpened = 0x0f
+    RetractShovel = 0x0A
+    CheckRetractedShovel = 0x0B
+    CloseTransferDoor = 0x0C
+    CheckTransferDoorClosed = 0x0D
+    OpenTransferDoor = 0x0E
+    CheckTransferDoorOpened = 0x0F
     MoveSwapStationToPos1 = 0x10
     CheckSwapStationAtPos1 = 0x11
     MoveSwapStationToPos2 = 0x12
