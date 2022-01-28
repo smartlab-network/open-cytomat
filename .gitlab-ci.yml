@@ -4,7 +4,7 @@ codequality:
   stage: test
   script:
     - python -m pip install .[dev]
-    - ./pre-commit
+    - ./run-checks
 
 pages:
   stage: deploy
