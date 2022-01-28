@@ -53,15 +53,17 @@ class SerialPort:
             if self.__serial_port.in_waiting:
                 raise SerialCommunicationError("There were unread bytes in the input buffer")
 
-            response = b""
-            self.__serial_port.write(command.encode("ascii") + b"\r")
-            while not response.endswith(b"\r"):
+            raw_command: bytes = command.encode("ascii") + b"\r"
+            raw_response: bytes = b""
+            self.__serial_port.write(raw_command)
+            while not raw_response.endswith(b"\r"):
                 char = self.__serial_port.read()
                 if not char:
                     raise TimeoutError(rf"Did not receive a '\r'-terminated response after {self.__timeout} seconds")
-                response += char
+                raw_response += char
 
-        return response[:-1].decode("ascii")
+        response: str = raw_response[:-1].decode("ascii")
+        return response
 
     @staticmethod
     def __check_prefix_and_strip(response: str, expected_prefix: str) -> str:
