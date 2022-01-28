@@ -19,7 +19,8 @@ class OverviewStatus(NamedTuple):
     transfer_station_occupied: bool
 
     @classmethod
-    def from_hex_string(cls, hex_byte: str):
+    def from_hex_string(cls, hex_byte: str) -> OverviewStatus:
+        """Create an instance from the hex string (e.g. ``'F1'``)"""
         return cls(*[bool(bit) for bit in hex2ba(hex_byte)][::-1])
 
 
@@ -99,6 +100,7 @@ class ActionStatus(NamedTuple):
 
     @classmethod
     def from_hex_string(cls, hex_byte: str) -> ActionStatus:
+        """Create an instance from the hex string (e.g. ``'F1'``)"""
         bits = hex2ba(hex_byte)
         type_ = enum_to_dict(ActionType)[ba2int(bits[:3])]
         target = enum_to_dict(ActionTarget)[ba2int(bits[3:])]
@@ -112,6 +114,7 @@ class SwapStationStatus(NamedTuple):
 
     @classmethod
     def from_response_string(cls, response: str) -> SwapStationStatus:
+        """Create an instance from the response string (e.g. ``'111'``)"""
         return SwapStationStatus(
             position1_at_door=response[0] == "1",
             occupied_at_door=response[1] == "1",

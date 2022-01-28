@@ -9,10 +9,12 @@ class ClimateController:
 
     @property
     def current_temperature(self) -> float:
+        """The current temperature (read-only)"""
         return float(self.__serial_port.issue_status_command("ch:it").split()[1])
 
     @property
     def target_temperature(self) -> float:
+        """The target temperature (can be set)"""
         return float(self.__serial_port.issue_status_command("ch:it").split()[0])
 
     @target_temperature.setter
@@ -23,10 +25,12 @@ class ClimateController:
 
     @property
     def current_co2(self) -> float:
+        """The current CO2 level (read-only)"""
         return float(self.__serial_port.issue_status_command("ch:ic").split()[1])
 
     @property
     def target_co2(self) -> float:
+        """The target CO2 level (can be set)"""
         return float(self.__serial_port.issue_status_command("ch:ic").split()[0])
 
     @target_co2.setter
