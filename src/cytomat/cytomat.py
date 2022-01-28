@@ -1,6 +1,5 @@
 import time
 from datetime import datetime, timedelta
-from typing import Union
 
 from cytomat.barcode_scanner import BarcodeScanner
 from cytomat.climate_controller import ClimateController
