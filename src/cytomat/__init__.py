@@ -7,6 +7,6 @@ else:
 
 from .cytomat import Cytomat
 
-__version__ = metadata.version(__name__)
+__version__ = metadata.version("open-cytomat")
 
 __all__ = ["__version__", "Cytomat"]
