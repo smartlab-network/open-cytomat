@@ -5,3 +5,15 @@ codequality:
   script:
     - python -m pip install .[dev]
     - ./pre-commit
+
+pages:
+  stage: deploy
+  only:
+    - master
+  script:
+    - python -m pip install .[docs]
+    - make -C docs/ html
+    - mv ./docs/_build/html ./public
+  artifacts:
+    paths:
+      - public/
