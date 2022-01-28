@@ -9,7 +9,7 @@ codequality:
 pages:
   stage: deploy
   only:
-    - master
+    - main
   script:
     - python -m pip install .[docs]
     - make -C docs/ html
