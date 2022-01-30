@@ -1,7 +1,6 @@
 SOURCEDIR     = .
 BUILDDIR      = _build
 HTMLDIR       = _build/html
-APIDOCDIR     = _apidoc
 
 .PHONY: html clean
 
