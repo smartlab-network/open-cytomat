@@ -6,3 +6,4 @@ python -m isort --check-only .
 python -m black --check .
 python -m pflake8 .
 python -m mypy .
+make -C docs/ clean html
