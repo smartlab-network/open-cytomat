@@ -9,4 +9,3 @@ html:
 
 clean:
 	rm -rf "$(BUILDDIR)"
-	rm -rf "$(APIDOCDIR)"
