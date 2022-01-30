@@ -10,6 +10,21 @@ Usage
 -----
 
 To control the Cytomat, use the :py:class:`cytomat.Cytomat` class.
+It requires the serial port as parameter:
+
+.. code-block::
+
+    >>> from cytomat import Cytomat
+
+    >>> c = Cytomat("COM5")
+
+    >>> print("Current temperature:", c.climate_controller.current_temperature)
+    Current temperature: 37.03
+
+    >>> print("Plate on transfer station?", c.overview_status.transfer_station_occupied)
+    Plate on transfer station? True
+
+    >>> c.move_plate_from_transfer_station_to_slot(5)
 
 The Cytomat class
 ------------------
