@@ -9,12 +9,12 @@ class ClimateController:
 
     @property
     def current_temperature(self) -> float:
-        """The current temperature (read-only)"""
+        """The current temperature, in °C (read-only)"""
         return float(self.__serial_port.issue_status_command("ch:it").split()[1])
 
     @property
     def target_temperature(self) -> float:
-        """The target temperature (can be set)"""
+        """The target temperature, in °C (can be set)"""
         return float(self.__serial_port.issue_status_command("ch:it").split()[0])
 
     @target_temperature.setter
