@@ -3,9 +3,7 @@ from __future__ import annotations
 from enum import IntEnum
 from typing import NamedTuple
 
-from bitarray.util import ba2int, hex2ba
-
-from cytomat.utils import enum_to_dict
+from cytomat.utils import enum_to_dict, int_to_bits
 
 
 class OverviewStatus(NamedTuple):
@@ -21,7 +19,7 @@ class OverviewStatus(NamedTuple):
     @classmethod
     def from_hex_string(cls, hex_byte: str) -> OverviewStatus:
         """Create an instance from the hex string (e.g. ``'F1'``)"""
-        return cls(*[bool(bit) for bit in hex2ba(hex_byte)][::-1])
+        return cls(*int_to_bits(int(hex_byte, base=16), n_bits=8))
 
 
 class ErrorStatus(IntEnum):
@@ -101,9 +99,9 @@ class ActionStatus(NamedTuple):
     @classmethod
     def from_hex_string(cls, hex_byte: str) -> ActionStatus:
         """Create an instance from the hex string (e.g. ``'F1'``)"""
-        bits = hex2ba(hex_byte)
-        type_ = enum_to_dict(ActionType)[ba2int(bits[:3])]
-        target = enum_to_dict(ActionTarget)[ba2int(bits[3:])]
+        num = int(hex_byte, base=16)
+        type_ = enum_to_dict(ActionType)[(num & 0b11100000) >> 5]
+        target = enum_to_dict(ActionTarget)[num & 0b00011111]
         return ActionStatus(type_, target)
 
 

@@ -1,7 +1,7 @@
 from contextlib import contextmanager
 from enum import IntEnum
 from threading import Lock
-from typing import Dict, Iterator, Type, TypeVar
+from typing import Dict, Iterator, Type, TypeVar, Tuple
 
 GenericIntEnum = TypeVar("GenericIntEnum", bound=IntEnum)
 
@@ -30,3 +30,21 @@ def enum_to_dict(enum: Type[GenericIntEnum]) -> Dict[int, GenericIntEnum]:
             continue
         ret[item.value] = item
     return ret
+
+
+def int_to_bits(num: int, n_bits: int) -> Tuple[bool]:
+    """
+    Convert an integer to its bit representation.
+
+    Examples
+    --------
+
+    >>> int_to_bits(3, 2)
+    (True, True)
+    >>> int_to_bits(0xF1, 8)
+    (True, True, True, True, False, False, False, True)
+    """
+    max_num_representable_by_n_bits = 2**n_bits - 1
+    if num > max_num_representable_by_n_bits:
+        raise ValueError(f"{n_bits} can only represent numbers <= {max_num_representable_by_n_bits}, got {num}")
+    return tuple(bool(num & 2**(n_bits-i-1)) for i in range(n_bits))
