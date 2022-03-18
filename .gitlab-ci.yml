@@ -3,7 +3,7 @@ image: python:3.7
 codequality:
   stage: test
   script:
-    - python -m pip install .[dev,docs]
+    - python -m pip install -e .[dev,docs]
     - ./run-checks
 
 pages:
