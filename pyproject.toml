@@ -1,24 +1,22 @@
+[tool.poetry]
+name = "open-cytomat"
+version = "0.1.0"
+description = ""
+authors = ["Niklas Mertsch <niklas.mertsch@stud.uni-goettingen.de>"
+	  ,"rsoeldner <r.soeldner@gmail.com>"]
+readme = "README.md"
+packages = [{include = "cytomat", from = "src"}]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+pyserial = "^3.5"
+
+[tool.poetry.group.dev.dependencies]
+mypy = "^1.4.1"
+pytest = "^7.4.0"
+
 [build-system]
-requires = [
-    "setuptools>=42",
-    "wheel",
-]
-build-backend = "setuptools.build_meta"
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
 
-[tool.black]
-line-length = 120
-fast = true
-
-[tool.isort]
-line_length = 120
-profile = "black"
-
-[tool.flake8]
-max-line-length = 120
-extend-ignore = "E203,E501"
-
-[[tool.mypy.overrides]]
-module = [
-    "serial",
-]
 ignore_missing_imports = true
