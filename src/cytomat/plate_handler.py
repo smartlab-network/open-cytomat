@@ -172,4 +172,4 @@ class PlateHandler:
         slot
             The target slot
         """
-        return self.__serial_port.issue_action_command(f"ll: {slot:03}")
+        return self.__serial_port.issue_action_command(f"ll:xp {slot:03}")

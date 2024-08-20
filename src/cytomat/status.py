@@ -7,14 +7,14 @@ from cytomat.utils import enum_to_dict, int_to_bits
 
 
 class OverviewStatus(NamedTuple):
-    transfer_station_occupied: bool
-    device_door_open: bool
-    transfer_door_open: bool
-    shovel_occupied: bool
-    error: bool
-    warning: bool
-    ready: bool
     busy: bool
+    ready: bool
+    warning: bool
+    error: bool
+    shovel_occupied: bool
+    transfer_door_open: bool
+    device_door_open: bool
+    transfer_station_occupied: bool
 
     @classmethod
     def from_hex_string(cls, hex_byte: str) -> OverviewStatus:
