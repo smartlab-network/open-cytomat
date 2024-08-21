@@ -1,6 +1,5 @@
 import time
 from datetime import datetime, timedelta
-
 from cytomat.barcode_scanner import BarcodeScanner
 from cytomat.climate_controller import ClimateController
 from cytomat.maintenance_controller import MaintenanceController
@@ -88,9 +87,3 @@ class Cytomat:
             time.sleep(poll_interval)
             status = self.overview_status
         return status
-
-
-
-c = Cytomat("COM17")
-c.overview_status()
-    

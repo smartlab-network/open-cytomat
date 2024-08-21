@@ -5,7 +5,6 @@ from typing import Dict, Iterator, Tuple, Type, TypeVar
 
 GenericIntEnum = TypeVar("GenericIntEnum", bound=IntEnum)
 
-
 @contextmanager
 def lock_threading_lock(lock: Lock, *, timeout: float) -> Iterator[None]:
     """Context manager for using a `threading.lock` with a timeout"""
