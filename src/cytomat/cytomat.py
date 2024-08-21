@@ -88,3 +88,9 @@ class Cytomat:
             time.sleep(poll_interval)
             status = self.overview_status
         return status
+
+
+
+c = Cytomat("COM17")
+c.overview_status()
+    
