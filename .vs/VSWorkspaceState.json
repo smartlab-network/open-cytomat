@@ -1,7 +1,9 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\src",
+    "\\src\\cytomat"
   ],
-  "SelectedNode": "\\C:\\labhub\\Repos\\smartlab-network\\open-cytomat",
+  "SelectedNode": "\\src\\cytomat\\cytomat.py",
   "PreviewInSolutionExplorer": false
 }

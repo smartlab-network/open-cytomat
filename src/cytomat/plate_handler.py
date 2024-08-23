@@ -7,6 +7,7 @@ class PlateHandler:
 
     def __init__(self, serial_port: SerialPort) -> None:
         self.__serial_port = serial_port
+        self.warning: bool = True
 
     def initialize(self) -> OverviewStatus:
         """(Re-) initialize the plate handler"""
@@ -173,3 +174,187 @@ class PlateHandler:
             The target slot
         """
         return self.__serial_port.issue_action_command(f"ll:xp {slot:03}")
+    
+
+    """commands to direct via absolute and relative steps.WARNING!!! 
+       The following comands do not check if the handler is in a safe position.
+       This can cause crashes. Make sure when entering these commands if its safe to run"""
+       
+    def warning_msg(self):
+            print("""
+    WARNING!!! This command does not check if the handler is in a safe position.
+    This can cause crashes. Make sure it is safe to run.""")
+            inp = int(input("""
+            To deactivate this warning message and execute the command: press 0
+            To just execute the command: press 1
+            To exit the script: press 2"""))
+        
+            match inp:
+                case 0:
+                    self.warning = False
+                case 1:
+                    self.warning = True
+                case 2:
+                    exit()
+                case _:
+                    self.warning_msg()
+                    
+    #lengh steps/cm ~ 1727 // range of usable values: 0-24000 steps
+    def run_shovel_in_absolute_steps(self, steps:int) -> OverviewStatus:
+        """
+        run the shovel in absolute steps from the point zero
+        
+        Parameters
+        ----------
+        steps
+            Motor Steps xxxxx
+        """
+        if self.warning:
+            self.warning_msg
+        return self.__serial_port.issue_action_command(f"sb:sa {steps:05}")
+    
+    def run_shovel_in_relative_steps(self, steps:int) -> OverviewStatus:
+        """
+        run the shovel in relative steps from the point zero
+        
+        Parameters
+        ----------
+        steps
+            Motor Steps xxxxx
+        """
+        if self.warning:
+            self.warning_msg
+        return self.__serial_port.issue_action_command(f"sb:sr {steps:05}")
+    
+    #rotation steps/deg ~ 173 // range of usable values: 0-180 deg
+    def run_turn_in_absolute_steps(self, steps:int) -> OverviewStatus:
+        """ 
+        run turn in absolute steps from the point zero
+        
+        Parameters
+        ----------
+        steps
+            Motor Steps xxxxx
+        """
+        if self.warning:
+            self.warning_msg
+        return self.__serial_port.issue_action_command(f"sb:da {steps:05}")
+    
+    def run_turn_in_relative_steps(self, steps:int) -> OverviewStatus:
+        """ 
+        run turn in relative steps from the point zero
+        
+        Parameters
+        ----------
+        steps
+            Motor Steps xxxxx
+        """
+        if self.warning:
+            self.warning_msg
+        return self.__serial_port.issue_action_command(f"sb:dr {steps:05}")
+    
+    #height steps/cm ~ 1700 
+    def run_height_in_absolute_steps(self, steps:int) -> OverviewStatus:
+        """ 
+        run height in absolute steps from the point zero
+        
+        Parameters
+        ----------
+        steps
+            Motor Steps xxxxx
+        """
+        if self.warning:
+            self.warning_msg
+        return self.__serial_port.issue_action_command(f"sb:ha {steps:05}")
+
+    def run_height_in_relative_steps(self, steps:int) -> OverviewStatus:
+        """ 
+        run height in relative steps from the point zero
+        
+        Parameters
+        ----------
+        steps
+            Motor Steps xxxxx
+        """
+        if self.warning:
+            self.warning_msg
+        return self.__serial_port.issue_action_command(f"sb:hr {steps:05}")
+    
+    def run_turntable_in_absolute_steps(self, steps:int) -> OverviewStatus:
+        """ 
+        run turntable in absolute steps from the point zero
+        
+        Parameters
+        ----------
+        steps
+            Motor Steps xxxxx
+        """
+        if self.warning:
+            self.warning_msg
+        return self.__serial_port.issue_action_command(f"sb:ka {steps:05}")
+    
+    def run_turntable_in_relative_steps(self, steps:int) -> OverviewStatus:
+        """ 
+        run turntable in relative steps from the point zero
+        
+        Parameters
+        ----------
+        steps
+            Motor Steps xxxxx
+        """
+        if self.warning:
+            self.warning_msg
+        return self.__serial_port.issue_action_command(f"sb:kr {steps:05}")
+   
+    #widh steps/cm ~ 24315 // right stacker ~ 15500 steps, left stacker ~ 317000 steps
+    def run_x_axis_in_absolute_steps(self, steps:int) -> OverviewStatus:
+        """ 
+        run x-axis in absolute steps from the point zero
+        
+        Parameters
+        ----------
+        steps
+            Motor Steps xxxxx
+        """
+        if self.warning:
+            self.warning_msg
+        return self.__serial_port.issue_action_command(f"sb:xa {steps:05}")
+    
+    def run_x_axis_in_relative_steps(self, steps:int) -> OverviewStatus:
+        """ 
+        run x-axis in relative steps from the point zero
+        
+        Parameters
+        ----------
+        steps
+            Motor Steps xxxxx
+        """
+        if self.warning:
+            self.warning_msg
+        return self.__serial_port.issue_action_command(f"sb:xr {steps:05}")
+    
+    def run_transfer_station_in_absolute_steps(self, steps:int) -> OverviewStatus:
+        """ 
+        run transfer statiom in absolute steps from the point zero
+        
+        Parameters
+        ----------
+        steps
+            Motor Steps xxxxx
+        """
+        if self.warning:
+            self.warning_msg
+        return self.__serial_port.issue_action_command(f"sb:ta {steps:05}")
+    
+    def run_transfer_station_in_relative_steps(self, steps:int) -> OverviewStatus:
+        """ 
+        run transfer statiom in relative steps from the point zero
+        
+        Parameters
+        ----------
+        steps
+            Motor Steps xxxxx
+        """
+        if self.warning:
+            self.warning_msg
+        return self.__serial_port.issue_action_command(f"sb:tr {steps:05}")
