@@ -176,7 +176,7 @@ class PlateHandler:
         return self.__serial_port.issue_action_command(f"ll:xp {slot:03}")
     
 
-    """commands to direct via absolute and relative steps.WARNING!!! 
+    """ommands to direct via absolute and relative steps.WARNING!!! 
        The following comands do not check if the handler is in a safe position.
        This can cause crashes. Make sure when entering these commands if its safe to run"""
        
@@ -184,22 +184,22 @@ class PlateHandler:
             print("""
     WARNING!!! This command does not check if the handler is in a safe position.
     This can cause crashes. Make sure it is safe to run.""")
-            inp = int(input("""
-            To deactivate this warning message and execute the command: press 0
-            To just execute the command: press 1
-            To exit the script: press 2"""))
+            inp = input("""
+            To deactivate this warning message and execute the command: press Y
+            To just execute the command: press N
+            To exit the script: press E""")
         
-            match inp:
-                case 0:
+            match inp.upper():
+                case "Y":
                     self.warning = False
-                case 1:
+                case "N":
                     self.warning = True
-                case 2:
+                case "E":
                     exit()
                 case _:
                     self.warning_msg()
                     
-    #lengh steps/cm ~ 1727 // range of usable values: 0-24000 steps
+    #lengh steps/cm ~ 1727 // range of usable values: 0-24000 steps (self messured Values)
     def run_shovel_in_absolute_steps(self, steps:int) -> OverviewStatus:
         """
         run the shovel in absolute steps from the point zero
@@ -215,7 +215,7 @@ class PlateHandler:
     
     def run_shovel_in_relative_steps(self, steps:int) -> OverviewStatus:
         """
-        run the shovel in relative steps from the point zero
+        run the shovel in relative steps from the current position
         
         Parameters
         ----------
@@ -226,7 +226,7 @@ class PlateHandler:
             self.warning_msg
         return self.__serial_port.issue_action_command(f"sb:sr {steps:05}")
     
-    #rotation steps/deg ~ 173 // range of usable values: 0-180 deg
+    #rotation steps/deg ~ 173 // range of usable values: 0-180 deg (self messured Values)
     def run_turn_in_absolute_steps(self, steps:int) -> OverviewStatus:
         """ 
         run turn in absolute steps from the point zero
@@ -242,7 +242,7 @@ class PlateHandler:
     
     def run_turn_in_relative_steps(self, steps:int) -> OverviewStatus:
         """ 
-        run turn in relative steps from the point zero
+        run turn in relative steps from the current position
         
         Parameters
         ----------
@@ -253,7 +253,7 @@ class PlateHandler:
             self.warning_msg
         return self.__serial_port.issue_action_command(f"sb:dr {steps:05}")
     
-    #height steps/cm ~ 1700 
+    #height steps/cm ~ 1700 (self messured Values)
     def run_height_in_absolute_steps(self, steps:int) -> OverviewStatus:
         """ 
         run height in absolute steps from the point zero
@@ -269,7 +269,7 @@ class PlateHandler:
 
     def run_height_in_relative_steps(self, steps:int) -> OverviewStatus:
         """ 
-        run height in relative steps from the point zero
+        run height in relative steps from the current position
         
         Parameters
         ----------
@@ -295,7 +295,7 @@ class PlateHandler:
     
     def run_turntable_in_relative_steps(self, steps:int) -> OverviewStatus:
         """ 
-        run turntable in relative steps from the point zero
+        run turntable in relative steps from the current position
         
         Parameters
         ----------
@@ -306,7 +306,7 @@ class PlateHandler:
             self.warning_msg
         return self.__serial_port.issue_action_command(f"sb:kr {steps:05}")
    
-    #widh steps/cm ~ 24315 // right stacker ~ 15500 steps, left stacker ~ 317000 steps
+    #widh steps/cm ~ 24315 // right stacker ~ at 15500 steps, left stacker ~ at 317000 steps (self messured Values)
     def run_x_axis_in_absolute_steps(self, steps:int) -> OverviewStatus:
         """ 
         run x-axis in absolute steps from the point zero
@@ -322,7 +322,7 @@ class PlateHandler:
     
     def run_x_axis_in_relative_steps(self, steps:int) -> OverviewStatus:
         """ 
-        run x-axis in relative steps from the point zero
+        run x-axis in relative steps from the current position
         
         Parameters
         ----------
@@ -348,7 +348,7 @@ class PlateHandler:
     
     def run_transfer_station_in_relative_steps(self, steps:int) -> OverviewStatus:
         """ 
-        run transfer statiom in relative steps from the point zero
+        run transfer statiom in relative steps from the current position
         
         Parameters
         ----------
