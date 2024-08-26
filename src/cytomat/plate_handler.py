@@ -1,6 +1,6 @@
 from cytomat.serial_port import SerialPort
 from cytomat.status import OverviewStatus
-
+from cytomat.utils import ConvertSteps as CS
 
 class PlateHandler:
     __serial_port: SerialPort
@@ -199,8 +199,8 @@ class PlateHandler:
                 case _:
                     self.warning_msg()
                     
-    #lengh steps/cm ~ 1727 // range of usable values: 0-24000 steps (self messured Values)
-    def run_shovel_in_absolute_steps(self, steps:int) -> OverviewStatus:
+    #lengh steps/cm ~ 172 // range of usable values: 0-24000 steps (self messured Values)
+    def run_shovel_in_absolute_mm(self, mm: float) -> OverviewStatus:
         """
         run the shovel in absolute steps from the point zero
         
@@ -211,9 +211,10 @@ class PlateHandler:
         """
         if self.warning:
             self.warning_msg
+        steps = CS.mm_to_steps_shovel(mm)
         return self.__serial_port.issue_action_command(f"sb:sa {steps:05}")
     
-    def run_shovel_in_relative_steps(self, steps:int) -> OverviewStatus:
+    def run_shovel_in_relative_mm(self, mm: float) -> OverviewStatus:
         """
         run the shovel in relative steps from the current position
         
@@ -224,10 +225,11 @@ class PlateHandler:
         """
         if self.warning:
             self.warning_msg
+        steps = CS.mm_to_steps_shovel(mm)
         return self.__serial_port.issue_action_command(f"sb:sr {steps:05}")
     
     #rotation steps/deg ~ 173 // range of usable values: 0-180 deg (self messured Values)
-    def run_turn_in_absolute_steps(self, steps:int) -> OverviewStatus:
+    def run_turn_in_absolute_degrees(self, deg: float) -> OverviewStatus:
         """ 
         run turn in absolute steps from the point zero
         
@@ -238,9 +240,10 @@ class PlateHandler:
         """
         if self.warning:
             self.warning_msg
+        steps = CS.deg_to_steps_turn(deg)
         return self.__serial_port.issue_action_command(f"sb:da {steps:05}")
     
-    def run_turn_in_relative_steps(self, steps:int) -> OverviewStatus:
+    def run_turn_in_relative_degrees(self, deg:float) -> OverviewStatus:
         """ 
         run turn in relative steps from the current position
         
@@ -251,10 +254,12 @@ class PlateHandler:
         """
         if self.warning:
             self.warning_msg
+        steps = CS.deg_to_steps_turn(deg)
         return self.__serial_port.issue_action_command(f"sb:dr {steps:05}")
     
-    #height steps/cm ~ 1700 (self messured Values)
-    def run_height_in_absolute_steps(self, steps:int) -> OverviewStatus:
+    #height steps/mm ~ 170 (self messured Values)
+    def run_height_in_absolute_mm(self, mm: float) -> OverviewStatus:
+        
         """ 
         run height in absolute steps from the point zero
         
@@ -263,11 +268,13 @@ class PlateHandler:
         steps
             Motor Steps xxxxx
         """
+        
         if self.warning:
             self.warning_msg
+        steps = CS.mm_to_steps_h(mm)
         return self.__serial_port.issue_action_command(f"sb:ha {steps:05}")
 
-    def run_height_in_relative_steps(self, steps:int) -> OverviewStatus:
+    def run_height_in_relative_mm(self, mm: float) -> OverviewStatus:
         """ 
         run height in relative steps from the current position
         
@@ -278,9 +285,10 @@ class PlateHandler:
         """
         if self.warning:
             self.warning_msg
+        steps = CS.mm_to_steps_h(mm)
         return self.__serial_port.issue_action_command(f"sb:hr {steps:05}")
     
-    def run_turntable_in_absolute_steps(self, steps:int) -> OverviewStatus:
+    def run_turntable_in_absolute_mm(self, steps:int) -> OverviewStatus:
         """ 
         run turntable in absolute steps from the point zero
         
@@ -293,7 +301,7 @@ class PlateHandler:
             self.warning_msg
         return self.__serial_port.issue_action_command(f"sb:ka {steps:05}")
     
-    def run_turntable_in_relative_steps(self, steps:int) -> OverviewStatus:
+    def run_turntable_in_relative_mm(self, steps:int) -> OverviewStatus:
         """ 
         run turntable in relative steps from the current position
         
@@ -306,8 +314,8 @@ class PlateHandler:
             self.warning_msg
         return self.__serial_port.issue_action_command(f"sb:kr {steps:05}")
    
-    #widh steps/cm ~ 24315 // right stacker ~ at 15500 steps, left stacker ~ at 317000 steps (self messured Values)
-    def run_x_axis_in_absolute_steps(self, steps:int) -> OverviewStatus:
+    #widh steps/mm ~ 2432 // right stacker ~ at 15500 steps, left stacker ~ at 317000 steps (self messured Values)
+    def run_x_axis_in_absolute_mm(self, mm: float) -> OverviewStatus:
         """ 
         run x-axis in absolute steps from the point zero
         
@@ -318,9 +326,10 @@ class PlateHandler:
         """
         if self.warning:
             self.warning_msg
+        steps = CS.mm_to_steps_x(mm)
         return self.__serial_port.issue_action_command(f"sb:xa {steps:05}")
     
-    def run_x_axis_in_relative_steps(self, steps:int) -> OverviewStatus:
+    def run_x_axis_in_relative_mm(self, mm: float) -> OverviewStatus:
         """ 
         run x-axis in relative steps from the current position
         
@@ -331,9 +340,10 @@ class PlateHandler:
         """
         if self.warning:
             self.warning_msg
+        steps = CS.mm_to_steps_x(mm)
         return self.__serial_port.issue_action_command(f"sb:xr {steps:05}")
     
-    def run_transfer_station_in_absolute_steps(self, steps:int) -> OverviewStatus:
+    def run_transfer_station_in_absolute_mm(self, steps:int) -> OverviewStatus:
         """ 
         run transfer statiom in absolute steps from the point zero
         
@@ -346,7 +356,7 @@ class PlateHandler:
             self.warning_msg
         return self.__serial_port.issue_action_command(f"sb:ta {steps:05}")
     
-    def run_transfer_station_in_relative_steps(self, steps:int) -> OverviewStatus:
+    def run_transfer_station_in_relative_mm(self, steps:int) -> OverviewStatus:
         """ 
         run transfer statiom in relative steps from the current position
         
