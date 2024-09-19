@@ -7,6 +7,18 @@
       "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\cytomat\\plate_handler.py||{8B382828-6202-11D1-8870-0000F87579D2}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\labhub\\Repos\\smartlab-network\\open-cytomat\\src\\cytomat\\cytomat.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\cytomat\\cytomat.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\labhub\\Repos\\smartlab-network\\open-cytomat\\src\\cytomat\\parameters.py||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\cytomat\\parameters.py||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\labhub\\Repos\\smartlab-network\\open-cytomat\\src\\cytomat\\utils.py||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\cytomat\\utils.py||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\labhub\\Repos\\smartlab-network\\open-cytomat\\src\\cytomat\\cytomat.py||{8B382828-6202-11D1-8870-0000F87579D2}",
       "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\cytomat\\cytomat.py||{8B382828-6202-11D1-8870-0000F87579D2}"
     },
@@ -23,28 +35,12 @@
       "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\cytomat\\serial_port.py||{8B382828-6202-11D1-8870-0000F87579D2}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\labhub\\Repos\\smartlab-network\\open-cytomat\\poetry.lock||{8B382828-6202-11D1-8870-0000F87579D2}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:poetry.lock||{8B382828-6202-11D1-8870-0000F87579D2}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\labhub\\Repos\\smartlab-network\\open-cytomat\\LICENSE||{8B382828-6202-11D1-8870-0000F87579D2}",
       "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:LICENSE||{8B382828-6202-11D1-8870-0000F87579D2}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\labhub\\Repos\\smartlab-network\\open-cytomat\\.gitlab-ci.yml||{8B382828-6202-11D1-8870-0000F87579D2}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:.gitlab-ci.yml||{8B382828-6202-11D1-8870-0000F87579D2}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\labhub\\Repos\\smartlab-network\\open-cytomat\\shell.nix||{8B382828-6202-11D1-8870-0000F87579D2}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:shell.nix||{8B382828-6202-11D1-8870-0000F87579D2}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\labhub\\Repos\\smartlab-network\\open-cytomat\\src\\cytomat\\swap_station.py||{8B382828-6202-11D1-8870-0000F87579D2}",
       "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\cytomat\\swap_station.py||{8B382828-6202-11D1-8870-0000F87579D2}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\labhub\\Repos\\smartlab-network\\open-cytomat\\src\\cytomat\\utils.py||{8B382828-6202-11D1-8870-0000F87579D2}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\cytomat\\utils.py||{8B382828-6202-11D1-8870-0000F87579D2}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\labhub\\Repos\\smartlab-network\\open-cytomat\\src\\cytomat\\status.py||{8B382828-6202-11D1-8870-0000F87579D2}",
@@ -58,49 +54,36 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Bookmark",
-              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": ".gitlab-ci.yml",
-              "DocumentMoniker": "C:\\labhub\\Repos\\smartlab-network\\open-cytomat\\.gitlab-ci.yml",
-              "RelativeDocumentMoniker": ".gitlab-ci.yml",
-              "ToolTip": "C:\\labhub\\Repos\\smartlab-network\\open-cytomat\\.gitlab-ci.yml",
-              "RelativeToolTip": ".gitlab-ci.yml",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003775|",
-              "WhenOpened": "2024-08-23T09:22:03.689Z",
+              "DocumentIndex": 1,
+              "Title": "cytomat.json",
+              "DocumentMoniker": "C:\\labhub\\Repos\\smartlab-network\\open-cytomat\\src\\cytomat\\cytomat.json",
+              "RelativeDocumentMoniker": "src\\cytomat\\cytomat.json",
+              "ToolTip": "C:\\labhub\\Repos\\smartlab-network\\open-cytomat\\src\\cytomat\\cytomat.json",
+              "RelativeToolTip": "src\\cytomat\\cytomat.json",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAAbAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2024-08-26T12:30:24.455Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "shell.nix",
-              "DocumentMoniker": "C:\\labhub\\Repos\\smartlab-network\\open-cytomat\\shell.nix",
-              "RelativeDocumentMoniker": "shell.nix",
-              "ToolTip": "C:\\labhub\\Repos\\smartlab-network\\open-cytomat\\shell.nix",
-              "RelativeToolTip": "shell.nix",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
-              "WhenOpened": "2024-08-23T09:21:52.924Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "poetry.lock",
-              "DocumentMoniker": "C:\\labhub\\Repos\\smartlab-network\\open-cytomat\\poetry.lock",
-              "RelativeDocumentMoniker": "poetry.lock",
-              "ToolTip": "C:\\labhub\\Repos\\smartlab-network\\open-cytomat\\poetry.lock",
-              "RelativeToolTip": "poetry.lock",
-              "ViewState": "AQIAAIoAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
-              "WhenOpened": "2024-08-23T09:21:29.512Z",
+              "DocumentIndex": 2,
+              "Title": "parameters.py",
+              "DocumentMoniker": "C:\\labhub\\Repos\\smartlab-network\\open-cytomat\\src\\cytomat\\parameters.py",
+              "RelativeDocumentMoniker": "src\\cytomat\\parameters.py",
+              "ToolTip": "C:\\labhub\\Repos\\smartlab-network\\open-cytomat\\src\\cytomat\\parameters.py",
+              "RelativeToolTip": "src\\cytomat\\parameters.py",
+              "ViewState": "AQIAAAMAAAAAAAAAAAAAAA0AAAA2AAAA",
+              "Icon": "00000000-0000-0000-0000-000000000000.000000|iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAHeSURBVDhPpVMxa1NRFP7ebZLSlgaltNpSVCySRUxL0NAh4FJpHWpxcZAUBEPG/AKHDsVBN5eGrCnoYKCDoDiUCKKBjtZBUZtJ2ojYJr40ue\u002B\u002B47k3VzD0hQr94OOed8853/k47z2cCETk2NAgk8mQDQMhhFjK5/Mb9vEotIDruoEsFovEzVvZbPaWLTcQ9uxCpVLp4l\u002Bk0\u002BlEPB5/wIPm7RVC9uxCMpm0UTdKpRKi0WiCQy3wUt8FCvw7VSNxbRapG4voDwucGgyjXC7bzH84ePt1HysbH/GhWoNstzA1OoSFhZuxQqFg8sfu4FutAd\u002BT8KSEYm7v7GJ0YnLClgYLaAcjU9N4Vx9Dda8OBz7OjwywSNsIXY39vEL7TxWpxv2eO3hWHUZ19xc8ti25UdvXzdpNWH0BDj8JiLOrPXfweOu9mRgRhOXUEPr7IiBfYeacB9HaBNRvQH4f6\u002BlgMERwGxJP7grEoq9shj9Uz\u002BVGpmIi4vXcwdzlcePgzLAuZPiSGw869Jg\u002Biw1Mvw50oLGcuoh71y8h1HwB1Js8UfFLnwScNnBhdYVLWsy1IwK5XM5GHaw9uu0LeSCMddZA32lz7zjOQxMcByK1SPU3O/Rjnai2fkjNz8/5L77TyQJ/AJc67LNf3QeWAAAAAElFTkSuQmCC",
+              "WhenOpened": "2024-08-26T11:47:01.919Z",
               "EditorCaption": ""
             },
             {
@@ -111,7 +94,7 @@
               "RelativeDocumentMoniker": "src\\cytomat\\plate_handler.py",
               "ToolTip": "C:\\labhub\\Repos\\smartlab-network\\open-cytomat\\src\\cytomat\\plate_handler.py",
               "RelativeToolTip": "src\\cytomat\\plate_handler.py",
-              "ViewState": "AQIAADoAAAAAAAAAAAAgwCoBAAAIAAAA",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAAbAAAAAAAAAA==",
               "Icon": "00000000-0000-0000-0000-000000000000.000000|iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAHeSURBVDhPpVMxa1NRFP7ebZLSlgaltNpSVCySRUxL0NAh4FJpHWpxcZAUBEPG/AKHDsVBN5eGrCnoYKCDoDiUCKKBjtZBUZtJ2ojYJr40ue\u002B\u002B47k3VzD0hQr94OOed8853/k47z2cCETk2NAgk8mQDQMhhFjK5/Mb9vEotIDruoEsFovEzVvZbPaWLTcQ9uxCpVLp4l\u002Bk0\u002BlEPB5/wIPm7RVC9uxCMpm0UTdKpRKi0WiCQy3wUt8FCvw7VSNxbRapG4voDwucGgyjXC7bzH84ePt1HysbH/GhWoNstzA1OoSFhZuxQqFg8sfu4FutAd\u002BT8KSEYm7v7GJ0YnLClgYLaAcjU9N4Vx9Dda8OBz7OjwywSNsIXY39vEL7TxWpxv2eO3hWHUZ19xc8ti25UdvXzdpNWH0BDj8JiLOrPXfweOu9mRgRhOXUEPr7IiBfYeacB9HaBNRvQH4f6\u002BlgMERwGxJP7grEoq9shj9Uz\u002BVGpmIi4vXcwdzlcePgzLAuZPiSGw869Jg\u002Biw1Mvw50oLGcuoh71y8h1HwB1Js8UfFLnwScNnBhdYVLWsy1IwK5XM5GHaw9uu0LeSCMddZA32lz7zjOQxMcByK1SPU3O/Rjnai2fkjNz8/5L77TyQJ/AJc67LNf3QeWAAAAAElFTkSuQmCC",
               "WhenOpened": "2024-08-21T14:48:55.591Z",
               "EditorCaption": ""
@@ -119,43 +102,42 @@
             {
               "$type": "Document",
               "DocumentIndex": 4,
-              "Title": "serial_port.py",
-              "DocumentMoniker": "C:\\labhub\\Repos\\smartlab-network\\open-cytomat\\src\\cytomat\\serial_port.py",
-              "RelativeDocumentMoniker": "src\\cytomat\\serial_port.py",
-              "ToolTip": "C:\\labhub\\Repos\\smartlab-network\\open-cytomat\\src\\cytomat\\serial_port.py",
-              "RelativeToolTip": "src\\cytomat\\serial_port.py",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "00000000-0000-0000-0000-000000000000.000000|iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAHeSURBVDhPpVMxa1NRFP7ebZLSlgaltNpSVCySRUxL0NAh4FJpHWpxcZAUBEPG/AKHDsVBN5eGrCnoYKCDoDiUCKKBjtZBUZtJ2ojYJr40ue\u002B\u002B47k3VzD0hQr94OOed8853/k47z2cCETk2NAgk8mQDQMhhFjK5/Mb9vEotIDruoEsFovEzVvZbPaWLTcQ9uxCpVLp4l\u002Bk0\u002BlEPB5/wIPm7RVC9uxCMpm0UTdKpRKi0WiCQy3wUt8FCvw7VSNxbRapG4voDwucGgyjXC7bzH84ePt1HysbH/GhWoNstzA1OoSFhZuxQqFg8sfu4FutAd\u002BT8KSEYm7v7GJ0YnLClgYLaAcjU9N4Vx9Dda8OBz7OjwywSNsIXY39vEL7TxWpxv2eO3hWHUZ19xc8ti25UdvXzdpNWH0BDj8JiLOrPXfweOu9mRgRhOXUEPr7IiBfYeacB9HaBNRvQH4f6\u002BlgMERwGxJP7grEoq9shj9Uz\u002BVGpmIi4vXcwdzlcePgzLAuZPiSGw869Jg\u002Biw1Mvw50oLGcuoh71y8h1HwB1Js8UfFLnwScNnBhdYVLWsy1IwK5XM5GHaw9uu0LeSCMddZA32lz7zjOQxMcByK1SPU3O/Rjnai2fkjNz8/5L77TyQJ/AJc67LNf3QeWAAAAAElFTkSuQmCC",
-              "WhenOpened": "2024-08-23T09:23:47.731Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "pyproject.toml",
-              "DocumentMoniker": "C:\\labhub\\Repos\\smartlab-network\\open-cytomat\\pyproject.toml",
-              "RelativeDocumentMoniker": "pyproject.toml",
-              "ToolTip": "C:\\labhub\\Repos\\smartlab-network\\open-cytomat\\pyproject.toml",
-              "RelativeToolTip": "pyproject.toml",
-              "ViewState": "AQIAAA8AAAAAAAAAAAAAABMAAAAaAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
-              "WhenOpened": "2024-08-23T09:20:06.023Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
               "Title": "cytomat.py",
               "DocumentMoniker": "C:\\labhub\\Repos\\smartlab-network\\open-cytomat\\src\\cytomat\\cytomat.py",
               "RelativeDocumentMoniker": "src\\cytomat\\cytomat.py",
               "ToolTip": "C:\\labhub\\Repos\\smartlab-network\\open-cytomat\\src\\cytomat\\cytomat.py",
               "RelativeToolTip": "src\\cytomat\\cytomat.py",
-              "ViewState": "AQIAADUAAAAAAAAAAAAMwAAAAAALAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAAmAAAA",
               "Icon": "00000000-0000-0000-0000-000000000000.000000|iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAHeSURBVDhPpVMxa1NRFP7ebZLSlgaltNpSVCySRUxL0NAh4FJpHWpxcZAUBEPG/AKHDsVBN5eGrCnoYKCDoDiUCKKBjtZBUZtJ2ojYJr40ue\u002B\u002B47k3VzD0hQr94OOed8853/k47z2cCETk2NAgk8mQDQMhhFjK5/Mb9vEotIDruoEsFovEzVvZbPaWLTcQ9uxCpVLp4l\u002Bk0\u002BlEPB5/wIPm7RVC9uxCMpm0UTdKpRKi0WiCQy3wUt8FCvw7VSNxbRapG4voDwucGgyjXC7bzH84ePt1HysbH/GhWoNstzA1OoSFhZuxQqFg8sfu4FutAd\u002BT8KSEYm7v7GJ0YnLClgYLaAcjU9N4Vx9Dda8OBz7OjwywSNsIXY39vEL7TxWpxv2eO3hWHUZ19xc8ti25UdvXzdpNWH0BDj8JiLOrPXfweOu9mRgRhOXUEPr7IiBfYeacB9HaBNRvQH4f6\u002BlgMERwGxJP7grEoq9shj9Uz\u002BVGpmIi4vXcwdzlcePgzLAuZPiSGw869Jg\u002Biw1Mvw50oLGcuoh71y8h1HwB1Js8UfFLnwScNnBhdYVLWsy1IwK5XM5GHaw9uu0LeSCMddZA32lz7zjOQxMcByK1SPU3O/Rjnai2fkjNz8/5L77TyQJ/AJc67LNf3QeWAAAAAElFTkSuQmCC",
-              "WhenOpened": "2024-08-21T11:37:49.882Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-21T11:37:49.882Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 3,
+              "Title": "utils.py",
+              "DocumentMoniker": "C:\\labhub\\Repos\\smartlab-network\\open-cytomat\\src\\cytomat\\utils.py",
+              "RelativeDocumentMoniker": "src\\cytomat\\utils.py",
+              "ToolTip": "C:\\labhub\\Repos\\smartlab-network\\open-cytomat\\src\\cytomat\\utils.py",
+              "RelativeToolTip": "src\\cytomat\\utils.py",
+              "ViewState": "AQIAADEAAAAAAAAAAAAqwD4AAAAEAAAA",
+              "Icon": "00000000-0000-0000-0000-000000000000.000000|iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAHeSURBVDhPpVMxa1NRFP7ebZLSlgaltNpSVCySRUxL0NAh4FJpHWpxcZAUBEPG/AKHDsVBN5eGrCnoYKCDoDiUCKKBjtZBUZtJ2ojYJr40ue\u002B\u002B47k3VzD0hQr94OOed8853/k47z2cCETk2NAgk8mQDQMhhFjK5/Mb9vEotIDruoEsFovEzVvZbPaWLTcQ9uxCpVLp4l\u002Bk0\u002BlEPB5/wIPm7RVC9uxCMpm0UTdKpRKi0WiCQy3wUt8FCvw7VSNxbRapG4voDwucGgyjXC7bzH84ePt1HysbH/GhWoNstzA1OoSFhZuxQqFg8sfu4FutAd\u002BT8KSEYm7v7GJ0YnLClgYLaAcjU9N4Vx9Dda8OBz7OjwywSNsIXY39vEL7TxWpxv2eO3hWHUZ19xc8ti25UdvXzdpNWH0BDj8JiLOrPXfweOu9mRgRhOXUEPr7IiBfYeacB9HaBNRvQH4f6\u002BlgMERwGxJP7grEoq9shj9Uz\u002BVGpmIi4vXcwdzlcePgzLAuZPiSGw869Jg\u002Biw1Mvw50oLGcuoh71y8h1HwB1Js8UfFLnwScNnBhdYVLWsy1IwK5XM5GHaw9uu0LeSCMddZA32lz7zjOQxMcByK1SPU3O/Rjnai2fkjNz8/5L77TyQJ/AJc67LNf3QeWAAAAAElFTkSuQmCC",
+              "WhenOpened": "2024-08-21T12:08:52.269Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "pyproject.toml",
+              "DocumentMoniker": "C:\\labhub\\Repos\\smartlab-network\\open-cytomat\\pyproject.toml",
+              "RelativeDocumentMoniker": "pyproject.toml",
+              "ToolTip": "C:\\labhub\\Repos\\smartlab-network\\open-cytomat\\pyproject.toml",
+              "RelativeToolTip": "pyproject.toml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAAQAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2024-08-23T09:20:06.023Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
               "Title": "LICENSE",
               "DocumentMoniker": "C:\\labhub\\Repos\\smartlab-network\\open-cytomat\\LICENSE",
               "RelativeDocumentMoniker": "LICENSE",
@@ -163,12 +145,11 @@
               "RelativeToolTip": "LICENSE",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
-              "WhenOpened": "2024-08-23T09:22:24.072Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-23T09:22:24.072Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 6,
               "Title": "__init__.py",
               "DocumentMoniker": "C:\\labhub\\Repos\\smartlab-network\\open-cytomat\\src\\cytomat\\__init__.py",
               "RelativeDocumentMoniker": "src\\cytomat\\__init__.py",
@@ -180,15 +161,15 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "utils.py",
-              "DocumentMoniker": "C:\\labhub\\Repos\\smartlab-network\\open-cytomat\\src\\cytomat\\utils.py",
-              "RelativeDocumentMoniker": "src\\cytomat\\utils.py",
-              "ToolTip": "C:\\labhub\\Repos\\smartlab-network\\open-cytomat\\src\\cytomat\\utils.py",
-              "RelativeToolTip": "src\\cytomat\\utils.py",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAAAAAAAA",
+              "DocumentIndex": 7,
+              "Title": "serial_port.py",
+              "DocumentMoniker": "C:\\labhub\\Repos\\smartlab-network\\open-cytomat\\src\\cytomat\\serial_port.py",
+              "RelativeDocumentMoniker": "src\\cytomat\\serial_port.py",
+              "ToolTip": "C:\\labhub\\Repos\\smartlab-network\\open-cytomat\\src\\cytomat\\serial_port.py",
+              "RelativeToolTip": "src\\cytomat\\serial_port.py",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "00000000-0000-0000-0000-000000000000.000000|iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAHeSURBVDhPpVMxa1NRFP7ebZLSlgaltNpSVCySRUxL0NAh4FJpHWpxcZAUBEPG/AKHDsVBN5eGrCnoYKCDoDiUCKKBjtZBUZtJ2ojYJr40ue\u002B\u002B47k3VzD0hQr94OOed8853/k47z2cCETk2NAgk8mQDQMhhFjK5/Mb9vEotIDruoEsFovEzVvZbPaWLTcQ9uxCpVLp4l\u002Bk0\u002BlEPB5/wIPm7RVC9uxCMpm0UTdKpRKi0WiCQy3wUt8FCvw7VSNxbRapG4voDwucGgyjXC7bzH84ePt1HysbH/GhWoNstzA1OoSFhZuxQqFg8sfu4FutAd\u002BT8KSEYm7v7GJ0YnLClgYLaAcjU9N4Vx9Dda8OBz7OjwywSNsIXY39vEL7TxWpxv2eO3hWHUZ19xc8ti25UdvXzdpNWH0BDj8JiLOrPXfweOu9mRgRhOXUEPr7IiBfYeacB9HaBNRvQH4f6\u002BlgMERwGxJP7grEoq9shj9Uz\u002BVGpmIi4vXcwdzlcePgzLAuZPiSGw869Jg\u002Biw1Mvw50oLGcuoh71y8h1HwB1Js8UfFLnwScNnBhdYVLWsy1IwK5XM5GHaw9uu0LeSCMddZA32lz7zjOQxMcByK1SPU3O/Rjnai2fkjNz8/5L77TyQJ/AJc67LNf3QeWAAAAAElFTkSuQmCC",
-              "WhenOpened": "2024-08-21T12:08:52.269Z"
+              "WhenOpened": "2024-08-23T09:23:47.731Z"
             },
             {
               "$type": "Document",
@@ -204,7 +185,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 10,
               "Title": "status.py",
               "DocumentMoniker": "C:\\labhub\\Repos\\smartlab-network\\open-cytomat\\src\\cytomat\\status.py",
               "RelativeDocumentMoniker": "src\\cytomat\\status.py",

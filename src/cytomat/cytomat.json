@@ -8,5 +8,6 @@
   "steps_per_mm_shovel": 173,
   "max_steps_shovel":  24000,
   "lid_holder_slot": 6,
-  "pipet_station_slot": 27
+  "pipet_station_slot": 27,
+    "COM_port": "COM17"
 }
