@@ -1,10 +1,8 @@
 [tool.poetry]
-name = "open-cytomat"
-version = "0.1.0"
+name = "cytomat-tests"
+version = "0.3.0"
 description = ""
-authors = ["Niklas Mertsch <niklas.mertsch@stud.uni-goettingen.de>"
-	  ,"rsoeldner <r.soeldner@gmail.com>"
-	  ,"Thiago Meyer <tiagmey@gmail.com>"]
+authors = ["Thiago Meyer <tiagmey@gmail.com>"]
 readme = "README.md"
 packages = [{include = "cytomat", from = "src"}]
 
@@ -15,6 +13,9 @@ pyserial = "^3.5"
 [tool.poetry.group.dev.dependencies]
 mypy = "^1.4.1"
 pytest = "^7.4.0"
+
+[tool.poetry.scripts]
+post_install = "cytomat.post_install:post_install"
 
 [build-system]
 requires = ["poetry-core"]
