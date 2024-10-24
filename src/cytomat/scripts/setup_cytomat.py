@@ -1,14 +1,25 @@
+from email.mime import base
 import os
 import shutil
+import sys
 from pathlib import Path
 
 def get_config_dir():
     return Path.home() / 'AppData' / 'Local' / 'Cytomat'
 
+def get_sample_path():
+    if getattr(sys, 'frozen', False) and hasattr(sys, '_MEIPASS'):
+        base_path = Path(sys._MEIPASS)
+    else:
+        base_path = Path(__file__).parent.parent
+
+    sample_config_file = base_path / "sample_config.json"
+    return sample_config_file
+
 def setup_config_dir():
     config_dir = get_config_dir()
     config_file = config_dir / "config.json"
-    sample_config_file = Path(__file__).parent.parent / "sample_config.json"
+    sample_config_file = get_sample_path()
     print(sample_config_file)
 
     try:
