@@ -39,3 +39,9 @@ bld/
 .vs/
 # Uncomment if you have tasks that create the project's static files in wwwroot
 #wwwroot/
+*.gz
+*.whl
+/.vs/slnx.sqlite
+/.vs/VSWorkspaceState.json
+/.vs/open-cytomat/v17/DocumentLayout.json
+/.vs/open-cytomat/v17/.wsuo
