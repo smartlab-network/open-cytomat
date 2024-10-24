@@ -8,7 +8,7 @@ def get_config_dir():
 def setup_config_dir():
     config_dir = get_config_dir()
     config_file = config_dir / "config.json"
-    sample_config_file = Path(__file__).parent.parent / "sample_configs.json"
+    sample_config_file = Path(__file__).parent.parent / "sample_config.json"
     print(sample_config_file)
 
     try:
