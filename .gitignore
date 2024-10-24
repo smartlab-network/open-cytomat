@@ -15,3 +15,5 @@ docs/_build/
 /.vs/open-cytomat/v17/DocumentLayout.backup.json
 /.vs/slnx.sqlite
 /.vs/VSWorkspaceState.json
+/myenv
+/venv

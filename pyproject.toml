@@ -1,10 +1,11 @@
 [tool.poetry]
 name = "cytomat-tests"
-version = "0.3.0"
+version = "0.3.4"
 description = ""
 authors = ["Thiago Meyer <tiagmey@gmail.com>"]
 readme = "README.md"
 packages = [{include = "cytomat", from = "src"}]
+include = [{ path = "src/cytomat/sample_config.json"}]
 
 [tool.poetry.dependencies]
 python = "^3.10"
