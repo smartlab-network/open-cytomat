@@ -1,4 +1,3 @@
-from email.mime import base
 import os
 import shutil
 import sys
@@ -50,4 +49,5 @@ def post_install():
     setup_config_dir()
 
 if __name__ == "__main__":
+    print(__name__)
     post_install()

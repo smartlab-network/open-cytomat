@@ -17,3 +17,4 @@ docs/_build/
 /.vs/VSWorkspaceState.json
 /myenv
 /venv
+/src/venv

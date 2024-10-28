@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "cytomat-tests"
-version = "0.3.4"
+version = "0.3.91"
 description = ""
 authors = ["Thiago Meyer <tiagmey@gmail.com>"]
 readme = "README.md"
