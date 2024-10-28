@@ -6,22 +6,32 @@ def lazy_load_config():
         config_file = get_config_dir() / 'config.json'
         with open(config_file, 'r') as f:
             python_data = json.load(f)
+            print("Data loaded")
             return python_data
     except:
+        print("Data not loaded")
         print(f"config file: {config_file} not found")
         return None
 
-python_data = lazy_load_config()
+class Parameters:
+    def __init__(self):
+        self.create_parameters()
 
-if python_data:
-    steps_per_mm_h = python_data['steps_per_mm_h']
-    max_steps_h = python_data['max_steps_h']
-    steps_per_mm_x = python_data['steps_per_mm_x']
-    max_steps_x = python_data['max_steps_x']
-    steps_per_mm_shovel = python_data['steps_per_mm_shovel']
-    max_steps_shovel = python_data['max_steps_shovel']
-    steps_per_deg_turn = python_data['steps_per_deg_turn']
-    max_deg_turn = python_data['max_deg_turn']
-    lid_holder_slot = python_data['lid_holder_slot']
-    pipet_station_slot = python_data['pipet_station_slot']
-    COM_port = python_data['COM_port']
+    def create_parameters(self):
+        python_data = lazy_load_config()
+        if python_data:
+            self.COM_port = python_data['COM_port']
+            self.steps_per_mm_h = python_data['steps_per_mm_h']
+            self.max_steps_h = python_data['max_steps_h']
+            self.steps_per_mm_x = python_data['steps_per_mm_x']
+            self.max_steps_x = python_data['max_steps_x']
+            self.steps_per_mm_shovel = python_data['steps_per_mm_shovel']
+            self.max_steps_shovel = python_data['max_steps_shovel']
+            self.steps_per_deg_turn = python_data['steps_per_deg_turn']
+            self.max_deg_turn = python_data['max_deg_turn']
+            self.lid_holder_slot = python_data['lid_holder_slot']
+            self.pipet_station_slot = python_data['pipet_station_slot']
+
+def get_parameters():
+    params = Parameters()
+    return params

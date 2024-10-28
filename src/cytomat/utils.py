@@ -2,7 +2,7 @@ from contextlib import contextmanager
 from enum import IntEnum
 from threading import Lock
 from typing import Dict, Iterator, Tuple, Type, TypeVar
-from cytomat import parameters
+from cytomat.parameters import Parameters
 GenericIntEnum = TypeVar("GenericIntEnum", bound=IntEnum)
 
 @contextmanager
@@ -48,27 +48,37 @@ def int_to_bits(num: int, n_bits: int) -> Tuple[bool, ...]:
         raise ValueError(f"{n_bits} can only represent numbers <= {max_num_representable_by_n_bits}, got {num}")
     return tuple(bool(num & (2 ** (n_bits - i - 1))) for i in range(n_bits))
 
-class ConvertSteps():
-    def mm_to_steps_x(mm: float)-> int:
-        return round(parameters.steps_per_mm_x * mm)
+class ConvertSteps:
+    parameters = Parameters()
+
+    @classmethod
+    def mm_to_steps_x(cls, mm: float)-> int:
+        return round(cls.parameters.steps_per_mm_x * mm)
+
+    @classmethod
+    def steps_to_mm_x(cls, steps: int)-> float:
+        return round(1/(cls.parameters.steps_per_mm_x / steps), 4)
     
-    def steps_to_mm_x(steps: int)-> float:
-        return round(1/(parameters.steps_per_mm_x / steps), 4)
+    @classmethod
+    def mm_to_steps_h(cls, mm: float)-> int:
+        return round(cls.parameters.steps_per_mm_h * mm)
+
+    @classmethod
+    def steps_to_mm_h(cls, steps: int)-> float:
+        return round(1/(cls.parameters.steps_per_mm_h / steps),4)
     
-    def mm_to_steps_h(mm: float)-> int:
-        return round(parameters.steps_per_mm_h * mm)
+    @classmethod
+    def mm_to_steps_shovel(cls, mm: float)-> int:
+        return round(cls.parameters.steps_per_mm_shovel * mm)
     
-    def steps_to_mm_h(steps: int)-> float:
-        return round(1/(parameters.steps_per_mm_h / steps),4)
+    @classmethod
+    def steps_to_mm_shovel(cls, steps: int)-> float:
+        return round(1/(cls.parameters.steps_per_mm_shovel / steps),4)
     
-    def mm_to_steps_shovel(mm: float)-> int:
-        return round(parameters.steps_per_mm_shovel * mm)
+    @classmethod
+    def deg_to_steps_turn(cls, deg: float)-> int:
+        return round(cls.parameters.steps_per_deg_turn * deg)
     
-    def steps_to_mm_shovel(steps: int)-> float:
-        return round(1/(parameters.steps_per_mm_shovel / steps),4)
-    
-    def deg_to_steps_turn(deg: float)-> int:
-        return round(parameters.steps_per_deg_turn * deg)
-    
-    def steps_to_deg_turn(steps: int)-> float:
-        return round(1/(parameters.steps_per_deg_turn / steps),4)
+    @classmethod
+    def steps_to_deg_turn(cls, steps: int)-> float:
+        return round(1/(cls.parameters.steps_per_deg_turn / steps),4)
