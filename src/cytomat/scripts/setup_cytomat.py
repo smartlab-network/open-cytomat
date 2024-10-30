@@ -4,7 +4,7 @@ import sys
 from pathlib import Path
 
 def get_config_dir():
-    return Path.home() / 'AppData' / 'Local' / 'Cytomat'
+    return Path('C:/ProgramData/Cytomat')
 
 def get_sample_path():
     if getattr(sys, 'frozen', False) and hasattr(sys, '_MEIPASS'):
