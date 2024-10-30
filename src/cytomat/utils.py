@@ -1,8 +1,11 @@
 from contextlib import contextmanager
 from enum import IntEnum
+from math import e
 from threading import Lock
 from typing import Dict, Iterator, Tuple, Type, TypeVar
-from cytomat.parameters import Parameters
+from uu import Error
+from cytomat.scripts.setup_cytomat import get_config_dir
+import json
 GenericIntEnum = TypeVar("GenericIntEnum", bound=IntEnum)
 
 @contextmanager
@@ -48,37 +51,16 @@ def int_to_bits(num: int, n_bits: int) -> Tuple[bool, ...]:
         raise ValueError(f"{n_bits} can only represent numbers <= {max_num_representable_by_n_bits}, got {num}")
     return tuple(bool(num & (2 ** (n_bits - i - 1))) for i in range(n_bits))
 
-class ConvertSteps:
-    parameters = Parameters()
 
-    @classmethod
-    def mm_to_steps_x(cls, mm: float)-> int:
-        return round(cls.parameters.steps_per_mm_x * mm)
+def lazy_load_config_file():
+        try:
+            config_file = get_config_dir() / 'config.json'
+            with open(config_file, 'r') as f:
+                python_data = json.load(f)
+                print("Data loaded")
+                return python_data
+        except Exception as e:
 
-    @classmethod
-    def steps_to_mm_x(cls, steps: int)-> float:
-        return round(1/(cls.parameters.steps_per_mm_x / steps), 4)
-    
-    @classmethod
-    def mm_to_steps_h(cls, mm: float)-> int:
-        return round(cls.parameters.steps_per_mm_h * mm)
-
-    @classmethod
-    def steps_to_mm_h(cls, steps: int)-> float:
-        return round(1/(cls.parameters.steps_per_mm_h / steps),4)
-    
-    @classmethod
-    def mm_to_steps_shovel(cls, mm: float)-> int:
-        return round(cls.parameters.steps_per_mm_shovel * mm)
-    
-    @classmethod
-    def steps_to_mm_shovel(cls, steps: int)-> float:
-        return round(1/(cls.parameters.steps_per_mm_shovel / steps),4)
-    
-    @classmethod
-    def deg_to_steps_turn(cls, deg: float)-> int:
-        return round(cls.parameters.steps_per_deg_turn * deg)
-    
-    @classmethod
-    def steps_to_deg_turn(cls, steps: int)-> float:
-        return round(1/(cls.parameters.steps_per_deg_turn / steps),4)
+            print(f"Data not loaded due to: {e}")
+            print(f"config file: {config_file} not found")
+            return None

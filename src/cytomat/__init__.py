@@ -3,11 +3,8 @@
 #     import importlib_metadata as metadata
 # else:
 #     from importlib import metadata
-
-
 from .cytomat import Cytomat
-from .parameters import Parameters
 # __version__ = metadata.version("open-cytomat")
 
 #__all__ = ["__version__", "Cytomat"]
-__all__ = ["Cytomat", "Parameters"]
+__all__ = ["Cytomat"]

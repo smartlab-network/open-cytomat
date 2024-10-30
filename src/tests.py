@@ -1,10 +1,14 @@
-from cytomat.parameters import get_parameters
-from cytomat.utils import ConvertSteps
+from cytomat.parameters import Parameters
+from cytomat.scripts import setup_cytomat
 
-params = get_parameters()
+setup_cytomat.post_install()
+
+params = Parameters()
+params.load()
 
 print(params.COM_port)
 
+from cytomat.convert_steps import ConvertSteps
 con = ConvertSteps()
 
 print(con.mm_to_steps_h(45))

@@ -1,6 +1,6 @@
 from cytomat.serial_port import SerialPort
 from cytomat.status import OverviewStatus
-from cytomat.utils import ConvertSteps as CS
+from cytomat.convert_steps import ConvertSteps as CS
 
 class PlateHandler:
     __serial_port: SerialPort
