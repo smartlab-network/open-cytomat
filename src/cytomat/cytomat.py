@@ -1,6 +1,5 @@
 import time
 from datetime import datetime, timedelta
-
 from cytomat.barcode_scanner import BarcodeScanner
 from cytomat.climate_controller import ClimateController
 from cytomat.maintenance_controller import MaintenanceController
@@ -35,9 +34,8 @@ class Cytomat:
     Exposes tower shaker functionality
     """
 
-    def __init__(self, serial_port: str):
+    def __init__(self, serial_port: str, json_path: str = 'cytomat.json'):
         self.__serial_port = SerialPort(serial_port, timeout=1)
-
         self.plate_handler = PlateHandler(self.__serial_port)
         self.barcode_scanner = BarcodeScanner(self.__serial_port)
         self.maintenance_controller = MaintenanceController(self.__serial_port)
