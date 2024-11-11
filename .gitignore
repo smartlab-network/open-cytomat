@@ -18,3 +18,4 @@ docs/_build/
 /myenv
 /venv
 /src/venv
+/.vs/slnx.sqlite
