@@ -17,3 +17,4 @@ class Parameters:
             cls.max_deg_turn = python_data['max_deg_turn']
             cls.lid_holder_slot = python_data['lid_holder_slot']
             cls.pipet_station_slot = python_data['pipet_station_slot']
+            cls.measurement_slot = python_data['measurement_slot']
