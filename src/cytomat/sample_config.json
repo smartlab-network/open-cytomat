@@ -1,0 +1,14 @@
+{
+  "steps_per_mm_h": 170,
+  "max_steps_h": 0,
+  "steps_per_mm_x": 2432,
+  "max_steps_x": 0,
+  "steps_per_deg_turn": 173,
+  "max_deg_turn": 180,
+  "steps_per_mm_shovel": 173,
+  "max_steps_shovel":  24000,
+  "lid_holder_slot": null,
+  "pipet_station_slot": 27,
+  "measurement_slot": 6,
+   "COM_port": "COM4"
+}

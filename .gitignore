@@ -45,3 +45,4 @@ bld/
 /.vs/VSWorkspaceState.json
 /.vs/open-cytomat/v17/DocumentLayout.json
 /.vs/open-cytomat/v17/.wsuo
+/src/venv
