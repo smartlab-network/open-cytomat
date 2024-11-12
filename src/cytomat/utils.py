@@ -1,10 +1,8 @@
 from contextlib import contextmanager
 from enum import IntEnum
-from math import e
 from threading import Lock
 from typing import Dict, Iterator, Tuple, Type, TypeVar
-from uu import Error
-from cytomat.scripts.setup_cytomat import get_config_dir
+from .scripts.setup_cytomat import get_config_dir
 import json
 GenericIntEnum = TypeVar("GenericIntEnum", bound=IntEnum)
 
