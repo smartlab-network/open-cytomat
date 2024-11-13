@@ -1,8 +1,10 @@
 [tool.poetry]
-name = "cytomat-tests"
-version = "0.5.0"
+name = "open-cytomat"
+version = "0.1.1"
 description = ""
-authors = ["Thiago Meyer <tiagmey@gmail.com>"]
+authors = ["Niklas Mertsch <niklas.mertsch@stud.uni-goettingen.de>"
+	  ,"rsoeldner <r.soeldner@gmail.com>"
+	  ,"Thiago Meyer <tiagmey@gmail.com>"]
 readme = "README.md"
 packages = [{include = "cytomat", from = "src"}]
 include = [{ path = "src/cytomat/data/sample_config.json"}]
