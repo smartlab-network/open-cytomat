@@ -28,6 +28,12 @@ class SerialPort:
         self.__port_lock = Lock()
         self.__timeout = timeout
 
+    def close(self) -> None:
+        self.__serial_port.close()
+
+    def open(self) -> None:
+        self.__serial_port.open()
+
     def __communicate(self, command: str) -> str:
         """
         Send a command to the port and return the response string

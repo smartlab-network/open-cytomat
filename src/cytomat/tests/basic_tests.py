@@ -1,5 +1,5 @@
 import sys 
-sys.path.insert(1,'C:/labhub/Repos/smartlab-network/open-cytomat/src/cytomat' )
+sys.path.insert(1,'C:/labhub/Repos/smartlab-network/open-cytomat/src' )
 
 from cytomat.parameters import Parameters
 

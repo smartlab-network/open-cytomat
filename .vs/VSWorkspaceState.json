@@ -1,7 +1,11 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\src",
+    "\\src\\cytomat",
+    "\\src\\cytomat\\data",
+    "\\src\\cytomat\\tests"
   ],
-  "SelectedNode": "\\C:\\labhub\\Repos\\smartlab-network\\open-cytomat",
+  "SelectedNode": "\\src\\cytomat\\plate_handler.py",
   "PreviewInSolutionExplorer": false
 }

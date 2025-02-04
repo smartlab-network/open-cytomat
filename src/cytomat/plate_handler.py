@@ -35,6 +35,16 @@ class PlateHandler:
         """
         return self.__serial_port.issue_action_command(f"mv:st {slot:03}")
 
+    def execute_low_level(self, cmd: str) -> OverviewStatus:
+        """
+        Execute the given low-level command
+
+        Parameters
+        ----------
+        command
+            The command to be executed e.g. ll:gp 001
+        """
+        return self.__serial_port.issue_action_command(cmd)
     def move_plate_from_transfer_station_to_handler(self) -> OverviewStatus:
         """
         Move a plate from the transfer station to the plate handler shovel
@@ -176,7 +186,7 @@ class PlateHandler:
         return self.__serial_port.issue_action_command(f"ll:xp {slot:03}")
     
 
-    """ommands to direct via absolute and relative steps.WARNING!!! 
+    """commands to direct via absolute and relative steps.WARNING!!! 
        The following comands do not check if the handler is in a safe position.
        This can cause crashes. Make sure when entering these commands if its safe to run"""
        
@@ -243,6 +253,25 @@ class PlateHandler:
         steps = CS.deg_to_steps_turn(deg)
         return self.__serial_port.issue_action_command(f"sb:da {steps:05}")
     
+
+    def goto_lid_drop_position(self) -> OverviewStatus:
+        
+        self.reset_handler_position()
+        self.move_x_to_slot(17)
+        self.rotate_handler_to_slot(1)
+        self.run_height_in_absolute_mm(26)
+        
+    def drop_lid(self) -> OverviewStatus:
+        self.goto_lid_drop_position()
+        self.run_shovel_in_absolute_mm(145)
+        self.run_height_in_absolute_mm(18)
+        
+    def pick_lid(self) -> OverviewStatus:
+        self.goto_lid_drop_position()
+        self.run_height_in_absolute_mm(18)
+        self.run_shovel_in_absolute_mm(150)
+        self.run_height_in_absolute_mm(26)
+
     def run_turn_in_relative_degrees(self, deg:float) -> OverviewStatus:
         """ 
         run turn in relative steps from the current position

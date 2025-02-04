@@ -6,8 +6,9 @@
   "steps_per_deg_turn": 173,
   "max_deg_turn": 180,
   "steps_per_mm_shovel": 173,
-  "max_steps_shovel":  24000,
+  "max_steps_shovel": 24000,
   "lid_holder_slot": 6,
   "pipet_station_slot": 27,
+  "pitch": 33,
   "COM_port": "COM4"
 }
