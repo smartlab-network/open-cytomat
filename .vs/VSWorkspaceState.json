@@ -1,7 +1,12 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\dist",
+    "\\src",
+    "\\src\\cytomat",
+    "\\src\\cytomat\\data",
+    "\\src\\cytomat\\scripts"
   ],
-  "SelectedNode": "\\C:\\labhub\\Repos\\smartlab-network\\open-cytomat",
+  "SelectedNode": "\\src\\cytomat\\data\\sample_config.json",
   "PreviewInSolutionExplorer": false
 }
