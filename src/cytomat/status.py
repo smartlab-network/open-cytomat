@@ -5,6 +5,7 @@ from typing import NamedTuple
 
 from cytomat.utils import enum_to_dict, int_to_bits
 
+# TODO: unify status decoding
 
 
 class PlateShuttleSystemStatus(NamedTuple):
@@ -19,6 +20,22 @@ class PlateShuttleSystemStatus(NamedTuple):
 
     @classmethod
     def from_hex_string(cls, hex_byte: str) -> PlateShuttleSystemStatus:
+        """Create an instance from the hex string (e.g. ``'F1'``)"""
+        return cls(*int_to_bits(int(hex_byte, base=16), n_bits=8))
+
+
+class OverviewStatus(NamedTuple):
+    command_in_process: bool
+    command_executed_device_busy: bool
+    warning_pending: bool
+    error_pending: bool
+    shovel_occupied: bool
+    auto_lift_door_open: bool
+    device_door_open: bool
+    transfer_station_occupied: bool
+
+    @classmethod
+    def from_hex_string(cls, hex_byte: str) -> OverviewStatus:
         """Create an instance from the hex string (e.g. ``'F1'``)"""
         return cls(*int_to_bits(int(hex_byte, base=16), n_bits=8))
 
