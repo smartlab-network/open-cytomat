@@ -37,7 +37,17 @@ class OverviewStatus(NamedTuple):
     @classmethod
     def from_hex_string(cls, hex_byte: str) -> OverviewStatus:
         """Create an instance from the hex string (e.g. ``'F1'``)"""
-        return cls(*int_to_bits(int(hex_byte, base=16), n_bits=8))
+        value = int(hex_byte, base=16)
+        return cls(
+            command_in_process=bool(value & 0x01),
+            command_executed_device_busy=bool(value & 0x02),
+            warning_pending=bool(value & 0x04),
+            error_pending=bool(value & 0x08),
+            shovel_occupied=bool(value & 0x10),
+            auto_lift_door_open=bool(value & 0x20),
+            device_door_open=bool(value & 0x40),
+            transfer_station_occupied=bool(value & 0x80),
+        )
 
 
 class ErrorStatus(IntEnum):
