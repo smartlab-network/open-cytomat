@@ -6,18 +6,19 @@ from typing import NamedTuple
 from cytomat.utils import enum_to_dict, int_to_bits
 
 
-class OverviewStatus(NamedTuple):
-    command_in_process: bool
-    command_executed_device_busy: bool
-    warning_pending: bool
-    error_pending: bool
-    shovel_occupied: bool
-    auto_lift_door_open: bool
-    device_door_open: bool
+
+class PlateShuttleSystemStatus(NamedTuple):
     transfer_station_occupied: bool
+    device_door_open: bool
+    transfer_door_open: bool
+    shovel_occupied: bool
+    error: bool
+    warning: bool
+    ready: bool
+    busy: bool
 
     @classmethod
-    def from_hex_string(cls, hex_byte: str) -> OverviewStatus:
+    def from_hex_string(cls, hex_byte: str) -> PlateShuttleSystemStatus:
         """Create an instance from the hex string (e.g. ``'F1'``)"""
         return cls(*int_to_bits(int(hex_byte, base=16), n_bits=8))
 
