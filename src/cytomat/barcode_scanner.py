@@ -1,5 +1,5 @@
 from cytomat.serial_port import SerialPort
-from cytomat.status import OverviewStatus
+from cytomat.status import PlateShuttleSystemStatus
 
 
 class BarcodeScanner:
@@ -8,7 +8,7 @@ class BarcodeScanner:
     def __init__(self, serial_port: SerialPort) -> None:
         self.__serial_port = serial_port
 
-    def read_all_barcodes(self) -> OverviewStatus:
+    def read_all_barcodes(self) -> PlateShuttleSystemStatus:
         """
         Real all barcodes
 
@@ -18,7 +18,9 @@ class BarcodeScanner:
         """
         return self.__serial_port.issue_action_command("mv:sc")
 
-    def read_barcodes_in_range(self, start_slot: int, end_slot: int) -> OverviewStatus:
+    def read_barcodes_in_range(
+        self, start_slot: int, end_slot: int
+    ) -> PlateShuttleSystemStatus:
         """
         Read all barcodes in the given range
 
@@ -33,7 +35,9 @@ class BarcodeScanner:
         -------
         The overview status after command submission
         """
-        return self.__serial_port.issue_action_command(f"mv:sc {start_slot:03} {end_slot:03}")
+        return self.__serial_port.issue_action_command(
+            f"mv:sc {start_slot:03} {end_slot:03}"
+        )
 
     def get_barcode_20char(self, slot: int) -> str:
         """
@@ -65,7 +69,7 @@ class BarcodeScanner:
         """
         return self.__serial_port.issue_status_command(f"ch:sd {slot:03}")
 
-    def abort_barcode_reading(self) -> OverviewStatus:
+    def abort_barcode_reading(self) -> PlateShuttleSystemStatus:
         """
         Abort barcode reading
 
@@ -97,7 +101,7 @@ class BarcodeScanner:
         """
         return self.__serial_port.issue_status_command("ch:bd")
 
-    def read_barcode_at_slot(self, slot: int) -> OverviewStatus:
+    def read_barcode_at_slot(self, slot: int) -> PlateShuttleSystemStatus:
         """
         Read the barcode at the given slot
 
@@ -112,7 +116,7 @@ class BarcodeScanner:
         """
         return self.__serial_port.issue_action_command(f"ll:hb {slot:03}")
 
-    def read_20char_barcode_at_current_position(self) -> OverviewStatus:
+    def read_20char_barcode_at_current_position(self) -> PlateShuttleSystemStatus:
         """
         Read the barcode at the current position (for short barcodes)
 
@@ -122,7 +126,7 @@ class BarcodeScanner:
         """
         return self.__serial_port.issue_action_command("ll:bc")
 
-    def read_30char_barcode_at_current_position(self) -> OverviewStatus:
+    def read_30char_barcode_at_current_position(self) -> PlateShuttleSystemStatus:
         """
         Read the barcode at the current position (for long barcodes)
 

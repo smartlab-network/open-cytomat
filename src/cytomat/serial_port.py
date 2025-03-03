@@ -4,7 +4,7 @@ from threading import Lock
 from serial import Serial
 
 from cytomat.errors import InvalidCommand, SerialCommunicationError, UnexpectedResponse
-from cytomat.status import OverviewStatus
+from cytomat.status import PlateShuttleSystemStatus
 from cytomat.utils import lock_threading_lock
 
 
@@ -103,7 +103,7 @@ class SerialPort:
             f"Expected response prefix '{expected_prefix}', got response '{response}'"
         )
 
-    def issue_action_command(self, command: str) -> OverviewStatus:
+    def issue_action_command(self, command: str) -> PlateShuttleSystemStatus:
         """
         Issue a command which results in 'ok XX' or 'er XX'.
 
@@ -114,7 +114,7 @@ class SerialPort:
 
         Returns
         -------
-        OverviewStatus
+        PlateShuttleSystemStatus
             The current device status, as given by the response 'ok XX'
 
         Raises
@@ -127,10 +127,16 @@ class SerialPort:
         response = self.__communicate(command)
 
         if response.startswith("ok"):
-            return OverviewStatus.from_hex_string(self.__check_prefix_and_strip(response, "ok"))
+            return PlateShuttleSystemStatus.from_hex_string(
+                self.__check_prefix_and_strip(response, "ok")
+            )
         if response.startswith("er"):
-            raise SerialCommunicationError.from_error_code(int(self.__check_prefix_and_strip(response, "er"), base=16))
-        raise UnexpectedResponse(f"Expected response like 'ok XX' or 'er XX', got '{response}'")
+            raise SerialCommunicationError.from_error_code(
+                int(self.__check_prefix_and_strip(response, "er"), base=16)
+            )
+        raise UnexpectedResponse(
+            f"Expected response like 'ok XX' or 'er XX', got '{response}'"
+        )
 
     def issue_status_command(self, command: str) -> str:
         """
@@ -158,6 +164,10 @@ class SerialPort:
         '01'  # full response was 'bs 01'
         """
         if not re.fullmatch("ch:[a-z]{2}.*", command):
-            raise InvalidCommand(f"Expected command like 'ch:xx' or 'ch:xx ...', got '{command}'")
+            raise InvalidCommand(
+                f"Expected command like 'ch:xx' or 'ch:xx ...', got '{command}'"
+            )
 
-        return self.__check_prefix_and_strip(self.__communicate(command), expected_prefix=command[3:5])
+        return self.__check_prefix_and_strip(
+            self.__communicate(command), expected_prefix=command[3:5]
+        )
