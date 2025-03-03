@@ -38,7 +38,9 @@ class ShakerController:
             The target frequency
         """
         self.__check_shaker_id(shaker)
-        return self.__serial_port.issue_action_command(f"se:pb {shaker + 19} {frequency:04}")
+        return self.__serial_port.issue_action_command(
+            f"se:pb {shaker + 19} {frequency:04}"
+        )
 
     def initialize_shakers(self) -> PlateShuttleSystemStatus:
         """Initialize the shakers"""

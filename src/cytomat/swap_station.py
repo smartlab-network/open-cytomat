@@ -11,7 +11,9 @@ class SwapStation:
     @property
     def status(self) -> SwapStationStatus:
         """The swap station status"""
-        return SwapStationStatus.from_response_string(self.__serial_port.issue_status_command("ch:sw"))
+        return SwapStationStatus.from_response_string(
+            self.__serial_port.issue_status_command("ch:sw")
+        )
 
     def rotate_to_position_1(self) -> PlateShuttleSystemStatus:
         """Rotate to position 1"""
