@@ -1,10 +1,13 @@
+import json
 from contextlib import contextmanager
 from enum import IntEnum
 from threading import Lock
 from typing import Dict, Iterator, Tuple, Type, TypeVar
+
 from .scripts.setup_cytomat import get_config_dir
-import json
+
 GenericIntEnum = TypeVar("GenericIntEnum", bound=IntEnum)
+
 
 @contextmanager
 def lock_threading_lock(lock: Lock, *, timeout: float) -> Iterator[None]:
@@ -46,19 +49,21 @@ def int_to_bits(num: int, n_bits: int) -> Tuple[bool, ...]:
     """
     max_num_representable_by_n_bits = 2**n_bits - 1
     if num > max_num_representable_by_n_bits:
-        raise ValueError(f"{n_bits} can only represent numbers <= {max_num_representable_by_n_bits}, got {num}")
+        raise ValueError(
+            f"{n_bits} can only represent numbers <= {max_num_representable_by_n_bits}, got {num}"
+        )
     return tuple(bool(num & (2 ** (n_bits - i - 1))) for i in range(n_bits))
 
 
 def lazy_load_config_file():
-        try:
-            config_file = get_config_dir() / 'config.json'
-            with open(config_file, 'r') as f:
-                python_data = json.load(f)
-                print("Data loaded")
-                return python_data
-        except Exception as e:
+    try:
+        config_file = get_config_dir() / "config.json"
+        with open(config_file, "r") as f:
+            python_data = json.load(f)
+            print("Data loaded")
+            return python_data
+    except Exception as e:
 
-            print(f"Data not loaded due to: {e}")
-            print(f"config file: {config_file} not found")
-            return None
+        print(f"Data not loaded due to: {e}")
+        print(f"config file: {config_file} not found")
+        return None

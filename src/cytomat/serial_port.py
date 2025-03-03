@@ -57,7 +57,9 @@ class SerialPort:
         """
         with lock_threading_lock(self.__port_lock, timeout=self.__timeout):
             if self.__serial_port.in_waiting:
-                raise SerialCommunicationError("There were unread bytes in the input buffer")
+                raise SerialCommunicationError(
+                    "There were unread bytes in the input buffer"
+                )
 
             raw_command: bytes = command.encode("ascii") + b"\r"
             raw_response: bytes = b""
@@ -65,7 +67,9 @@ class SerialPort:
             while not raw_response.endswith(b"\r"):
                 char = self.__serial_port.read()
                 if not char:
-                    raise TimeoutError(rf"Did not receive a '\r'-terminated response after {self.__timeout} seconds")
+                    raise TimeoutError(
+                        rf"Did not receive a '\r'-terminated response after {self.__timeout} seconds"
+                    )
                 raw_response += char
 
         response: str = raw_response[:-1].decode("ascii")
@@ -95,7 +99,9 @@ class SerialPort:
         """
         if response.startswith(expected_prefix):
             return response[len(expected_prefix) :].strip()
-        raise UnexpectedResponse(f"Expected response prefix '{expected_prefix}', got response '{response}'")
+        raise UnexpectedResponse(
+            f"Expected response prefix '{expected_prefix}', got response '{response}'"
+        )
 
     def issue_action_command(self, command: str) -> OverviewStatus:
         """

@@ -184,36 +184,39 @@ class PlateHandler:
             The target slot
         """
         return self.__serial_port.issue_action_command(f"ll:xp {slot:03}")
-    
 
     """commands to direct via absolute and relative steps.WARNING!!! 
        The following comands do not check if the handler is in a safe position.
        This can cause crashes. Make sure when entering these commands if its safe to run"""
-       
+
     def warning_msg(self):
-            print("""
+        print(
+            """
     WARNING!!! This command does not check if the handler is in a safe position.
-    This can cause crashes. Make sure it is safe to run.""")
-            inp = input("""
+    This can cause crashes. Make sure it is safe to run."""
+        )
+        inp = input(
+            """
             To deactivate this warning message and execute the command: press Y
             To just execute the command: press N
-            To exit the script: press E""")
-        
-            match inp.upper():
-                case "Y":
-                    self.warning = False
-                case "N":
-                    self.warning = True
-                case "E":
-                    exit()
-                case _:
-                    self.warning_msg()
-                    
-    #lengh steps/cm ~ 172 // range of usable values: 0-24000 steps (self messured Values)
-    def run_shovel_in_absolute_mm(self, mm: float) -> OverviewStatus:
+            To exit the script: press E"""
+        )
+
+        match inp.upper():
+            case "Y":
+                self.warning = False
+            case "N":
+                self.warning = True
+            case "E":
+                exit()
+            case _:
+                self.warning_msg()
+
+    # lengh steps/cm ~ 172 // range of usable values: 0-24000 steps (self messured Values)
+    def run_shovel_in_absolute_mm(self, mm: float) -> PlateShuttleSystemStatus:
         """
         run the shovel in absolute steps from the point zero
-        
+
         Parameters
         ----------
         steps
@@ -227,7 +230,7 @@ class PlateHandler:
     def run_shovel_in_relative_mm(self, mm: float) -> OverviewStatus:
         """
         run the shovel in relative steps from the current position
-        
+
         Parameters
         ----------
         steps
@@ -242,7 +245,7 @@ class PlateHandler:
     def run_turn_in_absolute_degrees(self, deg: float) -> OverviewStatus:
         """ 
         run turn in absolute steps from the point zero
-        
+
         Parameters
         ----------
         steps
@@ -252,7 +255,6 @@ class PlateHandler:
             self.warning_msg
         steps = CS.deg_to_steps_turn(deg)
         return self.__serial_port.issue_action_command(f"sb:da {steps:05}")
-    
 
     def goto_lid_drop_position(self) -> OverviewStatus:
         
@@ -275,7 +277,7 @@ class PlateHandler:
     def run_turn_in_relative_degrees(self, deg:float) -> OverviewStatus:
         """ 
         run turn in relative steps from the current position
-        
+
         Parameters
         ----------
         steps
@@ -291,13 +293,13 @@ class PlateHandler:
         
         """ 
         run height in absolute steps from the point zero
-        
+
         Parameters
         ----------
         steps
             Motor Steps xxxxx
         """
-        
+
         if self.warning:
             self.warning_msg
         steps = CS.mm_to_steps_h(mm)
@@ -306,7 +308,7 @@ class PlateHandler:
     def run_height_in_relative_mm(self, mm: float) -> OverviewStatus:
         """ 
         run height in relative steps from the current position
-        
+
         Parameters
         ----------
         steps
@@ -320,7 +322,7 @@ class PlateHandler:
     def run_turntable_in_absolute_mm(self, steps:int) -> OverviewStatus:
         """ 
         run turntable in absolute steps from the point zero
-        
+
         Parameters
         ----------
         steps
@@ -333,7 +335,7 @@ class PlateHandler:
     def run_turntable_in_relative_mm(self, steps:int) -> OverviewStatus:
         """ 
         run turntable in relative steps from the current position
-        
+
         Parameters
         ----------
         steps
@@ -347,7 +349,7 @@ class PlateHandler:
     def run_x_axis_in_absolute_mm(self, mm: float) -> OverviewStatus:
         """ 
         run x-axis in absolute steps from the point zero
-        
+
         Parameters
         ----------
         steps
@@ -361,7 +363,7 @@ class PlateHandler:
     def run_x_axis_in_relative_mm(self, mm: float) -> OverviewStatus:
         """ 
         run x-axis in relative steps from the current position
-        
+
         Parameters
         ----------
         steps
@@ -375,7 +377,7 @@ class PlateHandler:
     def run_transfer_station_in_absolute_mm(self, steps:int) -> OverviewStatus:
         """ 
         run transfer statiom in absolute steps from the point zero
-        
+
         Parameters
         ----------
         steps
@@ -388,7 +390,7 @@ class PlateHandler:
     def run_transfer_station_in_relative_mm(self, steps:int) -> OverviewStatus:
         """ 
         run transfer statiom in relative steps from the current position
-        
+
         Parameters
         ----------
         steps
