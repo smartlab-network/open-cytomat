@@ -80,7 +80,7 @@ class Cytomat:
         """
         status = self.overview_status
         end_time = datetime.now() + timedelta(seconds=timeout)
-        while status.busy:
+        while status.command_in_process:
             if end_time < datetime.now():
                 raise TimeoutError(f"Device still busy after {timeout} seconds")
             time.sleep(poll_interval)
