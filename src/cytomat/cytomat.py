@@ -1,5 +1,6 @@
 import time
 from datetime import datetime, timedelta
+
 from cytomat.barcode_scanner import BarcodeScanner
 from cytomat.climate_controller import ClimateController
 from cytomat.maintenance_controller import MaintenanceController
@@ -34,7 +35,7 @@ class Cytomat:
     Exposes tower shaker functionality
     """
 
-    def __init__(self, serial_port: str, json_path: str = 'cytomat.json'):
+    def __init__(self, serial_port: str, json_path: str = "cytomat.json"):
         self.__serial_port = SerialPort(serial_port, timeout=1)
         self.plate_handler = PlateHandler(self.__serial_port)
         self.barcode_scanner = BarcodeScanner(self.__serial_port)
@@ -45,24 +46,34 @@ class Cytomat:
     @property
     def overview_status(self) -> OverviewStatus:
         """Status overview"""
-        return OverviewStatus.from_hex_string(self.__serial_port.issue_status_command("ch:bs"))
+        return OverviewStatus.from_hex_string(
+            self.__serial_port.issue_status_command("ch:bs")
+        )
 
     @property
     def action_status(self) -> ActionStatus:
         """Action status"""
-        return ActionStatus.from_hex_string(self.__serial_port.issue_status_command("ch:ba"))
+        return ActionStatus.from_hex_string(
+            self.__serial_port.issue_status_command("ch:ba")
+        )
 
     @property
     def error_status(self) -> ErrorStatus:
         """Error status"""
-        return enum_to_dict(ErrorStatus)[int(self.__serial_port.issue_status_command("ch:be"), base=16)]
+        return enum_to_dict(ErrorStatus)[
+            int(self.__serial_port.issue_status_command("ch:be"), base=16)
+        ]
 
     @property
     def warning_status(self) -> WarningStatus:
         """Warning status"""
-        return enum_to_dict(WarningStatus)[int(self.__serial_port.issue_status_command("ch:bw"), base=16)]
+        return enum_to_dict(WarningStatus)[
+            int(self.__serial_port.issue_status_command("ch:bw"), base=16)
+        ]
 
-    def wait_until_not_busy(self, timeout: float, poll_interval: float = 0.5) -> OverviewStatus:
+    def wait_until_not_busy(
+        self, timeout: float, poll_interval: float = 0.5
+    ) -> OverviewStatus:
         """
         Block the current thread until the device is not busy anymore.
 
@@ -80,7 +91,7 @@ class Cytomat:
         """
         status = self.overview_status
         end_time = datetime.now() + timedelta(seconds=timeout)
-        while status.busy:
+        while status.command_in_process:
             if end_time < datetime.now():
                 raise TimeoutError(f"Device still busy after {timeout} seconds")
             time.sleep(poll_interval)
