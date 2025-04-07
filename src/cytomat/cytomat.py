@@ -35,7 +35,7 @@ class Cytomat:
     Exposes tower shaker functionality
     """
 
-    def __init__(self, serial_port: str, json_path: str = "cytomat.json"):
+    def __init__(self, serial_port: str):
         self.__serial_port = SerialPort(serial_port, timeout=1)
         self.plate_handler = PlateHandler(self.__serial_port)
         self.barcode_scanner = BarcodeScanner(self.__serial_port)
