@@ -387,9 +387,7 @@ class PlateHandler:
         steps = CS.mm_to_steps_x(mm)
         return self.serial_port.issue_action_command(f"sb:xr {steps:05}")
 
-    def run_transfer_station_in_absolute_mm(
-        self, mm: int
-    ) -> PlateShuttleSystemStatus:
+    def run_transfer_station_in_absolute_mm(self, mm: int) -> PlateShuttleSystemStatus:
         """
         run transfer station in absolute steps from the point zero
 
@@ -403,9 +401,7 @@ class PlateHandler:
         steps = CS.mm_to_steps_ts(mm)
         return self.serial_port.issue_action_command(f"sb:ta {steps:05}")
 
-    def run_transfer_station_in_relative_mm(
-        self, mm: int
-    ) -> PlateShuttleSystemStatus:
+    def run_transfer_station_in_relative_mm(self, mm: int) -> PlateShuttleSystemStatus:
         """
         run transfer station in relative steps from the current position
 

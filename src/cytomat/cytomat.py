@@ -46,24 +46,34 @@ class Cytomat:
     @property
     def overview_status(self) -> OverviewStatus:
         """Status overview"""
-        return OverviewStatus.from_hex_string(self.serial_port.issue_status_command("ch:bs"))
+        return OverviewStatus.from_hex_string(
+            self.serial_port.issue_status_command("ch:bs")
+        )
 
     @property
     def action_status(self) -> ActionStatus:
         """Action status"""
-        return ActionStatus.from_hex_string(self.serial_port.issue_status_command("ch:ba"))
+        return ActionStatus.from_hex_string(
+            self.serial_port.issue_status_command("ch:ba")
+        )
 
     @property
     def error_status(self) -> ErrorStatus:
         """Error status"""
-        return enum_to_dict(ErrorStatus)[int(self.serial_port.issue_status_command("ch:be"), base=16)]
+        return enum_to_dict(ErrorStatus)[
+            int(self.serial_port.issue_status_command("ch:be"), base=16)
+        ]
 
     @property
     def warning_status(self) -> WarningStatus:
         """Warning status"""
-        return enum_to_dict(WarningStatus)[int(self.serial_port.issue_status_command("ch:bw"), base=16)]
+        return enum_to_dict(WarningStatus)[
+            int(self.serial_port.issue_status_command("ch:bw"), base=16)
+        ]
 
-    def wait_until_not_busy(self, timeout: float, poll_interval: float = 0.5) -> OverviewStatus:
+    def wait_until_not_busy(
+        self, timeout: float, poll_interval: float = 0.5
+    ) -> OverviewStatus:
         """
         Block the current thread until the device is not busy anymore.
 

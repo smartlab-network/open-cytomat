@@ -67,7 +67,9 @@ class SerialPort:
             while not raw_response.endswith(b"\r"):
                 char = self.port.read()
                 if not char:
-                    raise TimeoutError(rf"Did not receive a '\r'-terminated response after {self.timeout} seconds")
+                    raise TimeoutError(
+                        rf"Did not receive a '\r'-terminated response after {self.timeout} seconds"
+                    )
                 raw_response += char
 
         response: str = raw_response[:-1].decode("ascii")
