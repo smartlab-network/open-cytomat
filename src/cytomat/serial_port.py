@@ -9,9 +9,9 @@ from cytomat.utils import lock_threading_lock
 
 
 class SerialPort:
-    __serial_port: Serial
-    __port_lock: Lock
-    __timeout: float
+    port: Serial
+    lock: Lock
+    timeout: float
 
     def __init__(self, port: str, *, timeout: float) -> None:
         """
@@ -24,17 +24,17 @@ class SerialPort:
         timeout: float, seconds
             A :class:`TimeoutError` will be raised of read or write operations took longer than this duration
         """
-        self.__serial_port = Serial(port, timeout=timeout, write_timeout=timeout)
-        self.__port_lock = Lock()
-        self.__timeout = timeout
+        self.port = Serial(port, timeout=timeout, write_timeout=timeout)
+        self.lock = Lock()
+        self.timeout = timeout
 
     def close(self) -> None:
-        self.__serial_port.close()
+        self.port.close()
 
     def open(self) -> None:
-        self.__serial_port.open()
+        self.port.open()
 
-    def __communicate(self, command: str) -> str:
+    def communicate(self, command: str) -> str:
         """
         Send a command to the port and return the response string
 
@@ -55,28 +55,26 @@ class SerialPort:
         SerialCommunicationError
             If there were unread bytes in the input buffer before sending the command
         """
-        with lock_threading_lock(self.__port_lock, timeout=self.__timeout):
-            if self.__serial_port.in_waiting:
+        with lock_threading_lock(self.lock, timeout=self.timeout):
+            if self.port.in_waiting:
                 raise SerialCommunicationError(
                     "There were unread bytes in the input buffer"
                 )
 
             raw_command: bytes = command.encode("ascii") + b"\r"
             raw_response: bytes = b""
-            self.__serial_port.write(raw_command)
+            self.port.write(raw_command)
             while not raw_response.endswith(b"\r"):
-                char = self.__serial_port.read()
+                char = self.port.read()
                 if not char:
-                    raise TimeoutError(
-                        rf"Did not receive a '\r'-terminated response after {self.__timeout} seconds"
-                    )
+                    raise TimeoutError(rf"Did not receive a '\r'-terminated response after {self.timeout} seconds")
                 raw_response += char
 
         response: str = raw_response[:-1].decode("ascii")
         return response
 
     @staticmethod
-    def __check_prefix_and_strip(response: str, expected_prefix: str) -> str:
+    def check_prefix_and_strip(response: str, expected_prefix: str) -> str:
         """
         Check if the response has the expected prefix, strip the prefix and whitespace
 
@@ -124,15 +122,15 @@ class SerialPort:
         UnexpectedResponse
             If the response did not match 'ok XX' or 'er XX'
         """
-        response = self.__communicate(command)
+        response = self.communicate(command)
 
         if response.startswith("ok"):
             return PlateShuttleSystemStatus.from_hex_string(
-                self.__check_prefix_and_strip(response, "ok")
+                self.check_prefix_and_strip(response, "ok")
             )
         if response.startswith("er"):
             raise SerialCommunicationError.from_error_code(
-                int(self.__check_prefix_and_strip(response, "er"), base=16)
+                int(self.check_prefix_and_strip(response, "er"), base=16)
             )
         raise UnexpectedResponse(
             f"Expected response like 'ok XX' or 'er XX', got '{response}'"
@@ -168,6 +166,6 @@ class SerialPort:
                 f"Expected command like 'ch:xx' or 'ch:xx ...', got '{command}'"
             )
 
-        return self.__check_prefix_and_strip(
-            self.__communicate(command), expected_prefix=command[3:5]
+        return self.check_prefix_and_strip(
+            self.communicate(command), expected_prefix=command[3:5]
         )
