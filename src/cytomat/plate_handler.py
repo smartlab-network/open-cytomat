@@ -198,7 +198,7 @@ class PlateHandler:
         return self.serial_port.issue_action_command(f"ll:xp {slot:03}")
 
     """commands to direct via absolute and relative steps.WARNING!!! 
-       The following comands do not check if the handler is in a safe position.
+       The following commands do not check if the handler is in a safe position.
        This can cause crashes. Make sure when entering these commands if its safe to run"""
 
     def warning_msg(self):
@@ -224,7 +224,7 @@ class PlateHandler:
             case _:
                 self.warning_msg()
 
-    # lengh steps/cm ~ 172 // range of usable values: 0-24000 steps (self messured Values)
+    # length steps/cm ~ 172 // range of usable values: 0-24000 steps (self measured Values)
     def run_shovel_in_absolute_mm(self, mm: float) -> PlateShuttleSystemStatus:
         """
         run the shovel in absolute steps from the point zero
