@@ -7,7 +7,6 @@ authors = ["Niklas Mertsch <niklas.mertsch@stud.uni-goettingen.de>"
 	  ,"Thiago Meyer <tiagmey@gmail.com>"]
 readme = "README.md"
 packages = [{include = "cytomat", from = "src"}]
-include = [{ path = "src/cytomat/data/sample_config.json"}]
 
 [tool.poetry.dependencies]
 python = "^3.10"
@@ -16,9 +15,6 @@ pyserial = "^3.5"
 [tool.poetry.group.dev.dependencies]
 mypy = "^1.4.1"
 pytest = "^7.4.0"
-
-[tool.poetry.scripts]
-post_install = "cytomat.post_install:post_install"
 
 [build-system]
 requires = ["poetry-core"]

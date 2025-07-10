@@ -1,8 +1,6 @@
 import re
 from threading import Lock
-
 from serial import Serial
-
 from cytomat.errors import InvalidCommand, SerialCommunicationError, UnexpectedResponse
 from cytomat.status import PlateShuttleSystemStatus
 from cytomat.utils import lock_threading_lock

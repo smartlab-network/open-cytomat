@@ -1,9 +1,6 @@
-from zipfile import stringEndArchive
-
-from cytomat.convert_steps import ConvertSteps as CS
 from cytomat.serial_port import SerialPort
 from cytomat.status import PlateShuttleSystemStatus
-
+from cytomat.parameters import Parameters
 
 class PlateHandler:
     __serial_port: SerialPort
@@ -11,6 +8,7 @@ class PlateHandler:
     def __init__(self, serial_port: SerialPort) -> None:
         self.__serial_port = serial_port
         self.warning: bool = True
+        self.parameters = Parameters()
 
     def initialize(self) -> PlateShuttleSystemStatus:
         """(Re-) initialize the plate handler"""
@@ -224,127 +222,106 @@ class PlateHandler:
             case _:
                 self.warning_msg()
 
-    # lengh steps/cm ~ 172 // range of usable values: 0-24000 steps (self messured Values)
-    def run_shovel_in_absolute_mm(self, mm: float) -> PlateShuttleSystemStatus:
+    def run_shovel_in_absolute_steps(self, steps: int) -> PlateShuttleSystemStatus:
         """
         run the shovel in absolute steps from the point zero
 
         Parameters
         ----------
-        mm
-            millimeters
+        steps
+            steps
         """
         if self.warning:
             self.warning_msg()
-        steps = CS.mm_to_steps_shovel(mm)
+
         return self.__serial_port.issue_action_command(f"sb:sa {steps:05}")
 
-    def run_shovel_in_relative_mm(self, mm: float) -> PlateShuttleSystemStatus:
+    def run_shovel_in_relative_steps(self, steps: int) -> PlateShuttleSystemStatus:
         """
         run the shovel in relative steps from the current position
 
         Parameters
         ----------
-        mm
-            millimeters
+        steps
+            steps
         """
         if self.warning:
             self.warning_msg()
-        steps = CS.mm_to_steps_shovel(mm)
+
         return self.__serial_port.issue_action_command(f"sb:sr {steps:05}")
 
-    # rotation steps/deg ~ 173 // range of usable values: 0-180 deg (self measured Values)
-    def run_turn_in_absolute_degrees(self, deg: float) -> PlateShuttleSystemStatus:
+    def run_turn_in_absolute_steps(self, steps: int) -> PlateShuttleSystemStatus:
         """
         run turn in absolute steps from the point zero
 
         Parameters
         ----------
-        deg
-            degrees
+        steps
+            steps
         """
         if self.warning:
             self.warning_msg()
-        steps = CS.deg_to_steps_turn(deg)
+
         return self.__serial_port.issue_action_command(f"sb:da {steps:05}")
 
-    def goto_lid_drop_position(self) -> PlateShuttleSystemStatus:
 
-        self.reset_handler_position()
-        self.move_x_to_slot(17)
-        self.rotate_handler_to_slot(1)
-        self.run_height_in_absolute_mm(26)
-
-    def drop_lid(self) -> PlateShuttleSystemStatus:
-        self.goto_lid_drop_position()
-        self.run_shovel_in_absolute_mm(145)
-        self.run_height_in_absolute_mm(18)
-
-    def pick_lid(self) -> PlateShuttleSystemStatus:
-        self.goto_lid_drop_position()
-        self.run_height_in_absolute_mm(18)
-        self.run_shovel_in_absolute_mm(150)
-        self.run_height_in_absolute_mm(26)
-
-    def run_turn_in_relative_degrees(self, deg: float) -> PlateShuttleSystemStatus:
+    def run_turn_in_relative_steps(self, steps: int) -> PlateShuttleSystemStatus:
         """
         run turn in relative steps from the current position
 
         Parameters
         ----------
-        deg
-            degrees
+        steps
+            steps
         """
         if self.warning:
             self.warning_msg()
-        steps = CS.deg_to_steps_turn(deg)
         return self.__serial_port.issue_action_command(f"sb:dr {steps:05}")
 
-    # height steps/mm ~ 170 (self measured Values)
-    def run_height_in_absolute_mm(self, mm: float) -> PlateShuttleSystemStatus:
+    def run_height_in_absolute_steps(self, steps: int) -> PlateShuttleSystemStatus:
         """
         run height in absolute steps from the point zero
 
         Parameters
         ----------
-        mm
-            millimeters
+        steps
+            steps
         """
 
         if self.warning:
             self.warning_msg()
-        steps = CS.mm_to_steps_h(mm)
+
         return self.__serial_port.issue_action_command(f"sb:ha {steps:05}")
 
-    def run_height_in_relative_mm(self, mm: float) -> PlateShuttleSystemStatus:
+    def run_height_in_relative_steps(self, steps: int) -> PlateShuttleSystemStatus:
         """
         run height in relative steps from the current position
 
         Parameters
         ----------
-        mm
-            millimeters
+        steps
+            steps
         """
         if self.warning:
             self.warning_msg()
-        steps = CS.mm_to_steps_h(mm)
+
         return self.__serial_port.issue_action_command(f"sb:hr {steps:05}")
 
-    def run_turntable_in_absolute_mm(self, mm: int) -> PlateShuttleSystemStatus:
+    def run_turntable_in_absolute_steps(self, steps: int) -> PlateShuttleSystemStatus:
         """
         run turntable in absolute steps from the point zero
 
         Parameters
         ----------
-        mm
-            millimeters
+        steüs
+            steps
         """
         if self.warning:
             self.warning_msg()
-        steps = CS.mm_to_steps_turntable(mm)
+
         return self.__serial_port.issue_action_command(f"sb:ka {steps:05}")
 
-    def run_turntable_in_relative_mm(self, mm: int) -> PlateShuttleSystemStatus:
+    def run_turntable_in_relative_steps(self, steps: int) -> PlateShuttleSystemStatus:
         """
         run turntable in relative steps from the current position
 
@@ -355,11 +332,10 @@ class PlateHandler:
         """
         if self.warning:
             self.warning_msg()
-        steps = CS.mm_to_steps_turntable(mm)
+
         return self.__serial_port.issue_action_command(f"sb:kr {steps:05}")
 
-    # width steps/mm ~ 2432 // right stacker ~ at 15500 steps, left stacker ~ at 317000 steps (self measured Values)
-    def run_x_axis_in_absolute_mm(self, mm: float) -> PlateShuttleSystemStatus:
+    def run_x_axis_in_absolute_steps(self, steps: int) -> PlateShuttleSystemStatus:
         """
         run x-axis in absolute steps from the point zero
 
@@ -370,25 +346,25 @@ class PlateHandler:
         """
         if self.warning:
             self.warning_msg()
-        steps = CS.mm_to_steps_x(mm)
+
         return self.__serial_port.issue_action_command(f"sb:xa {steps:05}")
 
-    def run_x_axis_in_relative_mm(self, mm: float) -> PlateShuttleSystemStatus:
+    def run_x_axis_in_relative_steps(self, steps: int) -> PlateShuttleSystemStatus:
         """
         run x-axis in relative steps from the current position
 
         Parameters
         ----------
-        mm
-            millimeters
+        steps
+            steps
         """
         if self.warning:
             self.warning_msg()
-        steps = CS.mm_to_steps_x(mm)
+
         return self.__serial_port.issue_action_command(f"sb:xr {steps:05}")
 
-    def run_transfer_station_in_absolute_mm(
-        self, mm: int
+    def run_transfer_station_in_absolute_steps(
+        self, steps: int
     ) -> PlateShuttleSystemStatus:
         """
         run transfer station in absolute steps from the point zero
@@ -400,11 +376,10 @@ class PlateHandler:
         """
         if self.warning:
             self.warning_msg()
-        steps = CS.mm_to_steps_ts(mm)
         return self.__serial_port.issue_action_command(f"sb:ta {steps:05}")
 
-    def run_transfer_station_in_relative_mm(
-        self, mm: int
+    def run_transfer_station_in_relative_steps(
+        self, steps: int
     ) -> PlateShuttleSystemStatus:
         """
         run transfer station in relative steps from the current position
@@ -416,5 +391,5 @@ class PlateHandler:
         """
         if self.warning:
             self.warning_msg()
-        steps = CS.mm_to_steps_ts(mm)
+
         return self.__serial_port.issue_action_command(f"sb:tr {steps:05}")
