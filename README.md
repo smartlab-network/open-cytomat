@@ -5,9 +5,9 @@
 	- bash
 	- pip install cytomat-tests
 
-### 2. Setup Package
-
-	- python -m cytomat.scripts.setup_cytomat_
+### 2. Use package
+    - from cytomat import Cytomat
+    - c = Cytomat("COM{int}")
 
 # Debugging
 

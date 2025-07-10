@@ -1,14 +1,11 @@
 from cytomat.serial_port import SerialPort
 from cytomat.status import PlateShuttleSystemStatus
-from cytomat.parameters import Parameters
-
 class PlateHandler:
     __serial_port: SerialPort
 
     def __init__(self, serial_port: SerialPort) -> None:
         self.__serial_port = serial_port
         self.warning: bool = True
-        self.parameters = Parameters()
 
     def initialize(self) -> PlateShuttleSystemStatus:
         """(Re-) initialize the plate handler"""
