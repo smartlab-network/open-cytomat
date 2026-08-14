@@ -1,13 +1,12 @@
 # Configuration file for the Sphinx documentation builder.
 from glob import glob
+from importlib.metadata import version
 from os.path import dirname, join, relpath
-
-import cytomat
 
 project = "open-cytomat"
 author = "Niklas Mertsch"
 copyright = f"2022, {author}"
-release = cytomat.__version__
+release = version("open-cytomat")
 language = "en"
 
 exclude_patterns = ["_build"]

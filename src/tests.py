@@ -1,12 +1,10 @@
-from cytomat.parameters import Parameters
 from cytomat.scripts import setup_cytomat
 
 setup_cytomat.post_install()
 
-"""params = Parameters()
-params.load()
+"""config = load_config()
 
-print(params.COM_port)
+print(config.com_port)
 
 from cytomat.convert_steps import ConvertSteps
 con = ConvertSteps()

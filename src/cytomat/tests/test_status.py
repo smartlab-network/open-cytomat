@@ -1,14 +1,9 @@
-import sys
-
-sys.path.insert(1, "C:/labhub/Repos/smartlab-network/open-cytomat/src")
-
-from cytomat import Cytomat
 from cytomat.status import PlateShuttleSystemStatus
 
 
-def test_status_parse():
+def test_status_parse() -> None:
     # PDF P. 11
-    s = PlateShuttleSystemStatus(
+    status = PlateShuttleSystemStatus(
         busy=True,
         ready=False,
         warning=True,
@@ -19,4 +14,4 @@ def test_status_parse():
         transfer_station_occupied=True,
     )
 
-    assert PlateShuttleSystemStatus.from_hex_string("0xc5") == s
+    assert PlateShuttleSystemStatus.from_hex_string("0xc5") == status

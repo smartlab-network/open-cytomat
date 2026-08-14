@@ -2,8 +2,8 @@ import sys
 
 sys.path.insert(1, "C:/labhub/Repos/smartlab-network/open-cytomat/src")
 
-from cytomat.parameters import Parameters
+from cytomat.config import load_config  # noqa: E402
 
-params = Parameters()
+config = load_config()
 
-print(params.COM_port)
+print(config.com_port)

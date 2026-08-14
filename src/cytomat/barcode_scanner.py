@@ -3,10 +3,10 @@ from cytomat.status import PlateShuttleSystemStatus
 
 
 class BarcodeScanner:
-    __serial_port: SerialPort
+    serial_port: SerialPort
 
     def __init__(self, serial_port: SerialPort) -> None:
-        self.__serial_port = serial_port
+        self.serial_port = serial_port
 
     def read_all_barcodes(self) -> PlateShuttleSystemStatus:
         """
@@ -16,7 +16,7 @@ class BarcodeScanner:
         -------
         The overview status after command submission
         """
-        return self.__serial_port.issue_action_command("mv:sc")
+        return self.serial_port.issue_action_command("mv:sc")
 
     def read_barcodes_in_range(
         self, start_slot: int, end_slot: int
@@ -35,7 +35,7 @@ class BarcodeScanner:
         -------
         The overview status after command submission
         """
-        return self.__serial_port.issue_action_command(
+        return self.serial_port.issue_action_command(
             f"mv:sc {start_slot:03} {end_slot:03}"
         )
 
@@ -52,7 +52,7 @@ class BarcodeScanner:
         -------
         The barcode
         """
-        return self.__serial_port.issue_status_command(f"ch:sc {slot:03}")
+        return self.serial_port.issue_status_command(f"ch:sc {slot:03}")
 
     def get_barcode_30char(self, slot: int) -> str:
         """
@@ -67,7 +67,7 @@ class BarcodeScanner:
         -------
         The barcode
         """
-        return self.__serial_port.issue_status_command(f"ch:sd {slot:03}")
+        return self.serial_port.issue_status_command(f"ch:sd {slot:03}")
 
     def abort_barcode_reading(self) -> PlateShuttleSystemStatus:
         """
@@ -77,7 +77,7 @@ class BarcodeScanner:
         -------
         The overview status after command submission
         """
-        return self.__serial_port.issue_action_command("rs:sc")
+        return self.serial_port.issue_action_command("rs:sc")
 
     @property
     def last_barcode_20char(self) -> str:
@@ -88,7 +88,7 @@ class BarcodeScanner:
         -------
         The last barcode
         """
-        return self.__serial_port.issue_status_command("ch:bc")
+        return self.serial_port.issue_status_command("ch:bc")
 
     @property
     def last_barcode_30char(self) -> str:
@@ -99,7 +99,7 @@ class BarcodeScanner:
         -------
         The last barcode
         """
-        return self.__serial_port.issue_status_command("ch:bd")
+        return self.serial_port.issue_status_command("ch:bd")
 
     def read_barcode_at_slot(self, slot: int) -> PlateShuttleSystemStatus:
         """
@@ -114,7 +114,7 @@ class BarcodeScanner:
         -------
         The overview status after command submission
         """
-        return self.__serial_port.issue_action_command(f"ll:hb {slot:03}")
+        return self.serial_port.issue_action_command(f"ll:hb {slot:03}")
 
     def read_20char_barcode_at_current_position(self) -> PlateShuttleSystemStatus:
         """
@@ -124,7 +124,7 @@ class BarcodeScanner:
         -------
         The overview status after command submission
         """
-        return self.__serial_port.issue_action_command("ll:bc")
+        return self.serial_port.issue_action_command("ll:bc")
 
     def read_30char_barcode_at_current_position(self) -> PlateShuttleSystemStatus:
         """
@@ -134,4 +134,4 @@ class BarcodeScanner:
         -------
         The overview status after command submission
         """
-        return self.__serial_port.issue_action_command("ll:bd")
+        return self.serial_port.issue_action_command("ll:bd")

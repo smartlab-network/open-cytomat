@@ -2,8 +2,8 @@
 
 set -ex
 
-python -m isort --check-only .
-python -m black --check .
-python -m pflake8 .
-python -m mypy .
+uv run python -m isort --check-only .
+uv run python -m black --check .
+uv run python -m flake8 src tests
+uv run python -m mypy src tests
 make -C docs/ clean html

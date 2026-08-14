@@ -49,6 +49,7 @@ def int_to_bits(num: int, n_bits: int) -> Tuple[bool, ...]:
     max_num_representable_by_n_bits = 2**n_bits - 1
     if num > max_num_representable_by_n_bits:
         raise ValueError(
-            f"{n_bits} can only represent numbers <= {max_num_representable_by_n_bits}, got {num}"
+            f"{n_bits} can only represent numbers <= "
+            f"{max_num_representable_by_n_bits}, got {num}"
         )
     return tuple(bool(num & (2 ** (n_bits - i - 1))) for i in range(n_bits))

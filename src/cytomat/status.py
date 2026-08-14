@@ -1,14 +1,13 @@
 from __future__ import annotations
 
 from enum import IntEnum
-from typing import NamedTuple
 
-from cytomat.utils import enum_to_dict, int_to_bits
+from pydantic import BaseModel
 
-# TODO: unify status decoding
+from cytomat.utils import int_to_bits
 
 
-class PlateShuttleSystemStatus(NamedTuple):
+class PlateShuttleSystemStatus(BaseModel):
     transfer_station_occupied: bool
     device_door_open: bool
     transfer_door_open: bool
@@ -20,11 +19,21 @@ class PlateShuttleSystemStatus(NamedTuple):
 
     @classmethod
     def from_hex_string(cls, hex_byte: str) -> PlateShuttleSystemStatus:
-        """Create an instance from the hex string (e.g. ``'F1'``)"""
-        return cls(*int_to_bits(int(hex_byte, base=16), n_bits=8))
+        """Create an instance from the hex string (e.g. ``'F1'``)."""
+        bits = int_to_bits(int(hex_byte, base=16), n_bits=8)
+        return cls(
+            transfer_station_occupied=bits[0],
+            device_door_open=bits[1],
+            transfer_door_open=bits[2],
+            shovel_occupied=bits[3],
+            error=bits[4],
+            warning=bits[5],
+            ready=bits[6],
+            busy=bits[7],
+        )
 
 
-class OverviewStatus(NamedTuple):
+class OverviewStatus(BaseModel):
     command_in_process: bool
     command_executed_device_busy: bool
     warning_pending: bool
@@ -36,7 +45,7 @@ class OverviewStatus(NamedTuple):
 
     @classmethod
     def from_hex_string(cls, hex_byte: str) -> OverviewStatus:
-        """Create an instance from the hex string (e.g. ``'F1'``)"""
+        """Create an instance from the hex string (e.g. ``'F1'``)."""
         value = int(hex_byte, base=16)
         return cls(
             command_in_process=bool(value & 0x01),
@@ -71,6 +80,11 @@ class ErrorStatus(IntEnum):
     ShakerClampNotClosed = 0x14
     Critical = 0xFF
 
+    @classmethod
+    def from_hex_string(cls, hex_byte: str) -> ErrorStatus:
+        """Map a status hex byte (e.g. ``'0A'``) to a typed error status."""
+        return cls(int(hex_byte, base=16))
+
 
 class WarningStatus(IntEnum):
     NoWarning = 0x00
@@ -85,8 +99,14 @@ class WarningStatus(IntEnum):
     InitialisingDueToOpenedDeviceDoor = 0x09
     TransferStationNotRotated = 0x0C
 
+    @classmethod
+    def from_hex_string(cls, hex_byte: str) -> WarningStatus:
+        """Map a status hex byte (e.g. ``'09'``) to a typed warning status."""
+        return cls(int(hex_byte, base=16))
+
 
 class ActionType(IntEnum):
+    NoAction = 0x00
     MoveHeightBelowSlot = 0x01
     CheckHeightBelowSlot = 0x02
     MoveHeightAboveSlot = 0x03
@@ -111,6 +131,8 @@ class ActionType(IntEnum):
     MoveToBarcodeReader = 0x16
     CheckHandlerAtBarcodeReader = 0x17
     ReadBarcode = 0x18
+    UnknownX1b = 0x1B
+    UnknownX1c = 0x1C
 
 
 class ActionTarget(IntEnum):
@@ -120,29 +142,37 @@ class ActionTarget(IntEnum):
     TransferStation = 4
 
 
-class ActionStatus(NamedTuple):
+class ActionStatus(BaseModel):
     type: ActionType
     target: ActionTarget
 
     @classmethod
     def from_hex_string(cls, hex_byte: str) -> ActionStatus:
-        """Create an instance from the hex string (e.g. ``'F1'``)"""
-        num = int(hex_byte, base=16)
-        type_ = enum_to_dict(ActionType)[(num & 0b11100000) >> 5]
-        target = enum_to_dict(ActionTarget)[num & 0b00011111]
-        return ActionStatus(type_, target)
+        """Create an instance from the hex string (e.g. ``'F1'``)."""
+        value = int(hex_byte, base=16)
+        target = ActionTarget((value & 0b11100000) >> 5)
+        action_type = ActionType(value & 0b00011111)
+        return cls(type=action_type, target=target)
 
 
-class SwapStationStatus(NamedTuple):
+class SwapStationStatus(BaseModel):
     position1_at_door: bool
     occupied_at_door: bool
     occupied_at_user: bool
 
     @classmethod
     def from_response_string(cls, response: str) -> SwapStationStatus:
-        """Create an instance from the response string (e.g. ``'111'``)"""
-        return SwapStationStatus(
+        """Create an instance from the response string (e.g. ``'111'``)."""
+        return cls(
             position1_at_door=response[0] == "1",
             occupied_at_door=response[1] == "1",
             occupied_at_user=response[2] == "1",
         )
+
+
+class Status(BaseModel):
+    plate_shuttle_system: PlateShuttleSystemStatus
+    overview: OverviewStatus
+    action: ActionStatus
+    error: ErrorStatus
+    warning: WarningStatus

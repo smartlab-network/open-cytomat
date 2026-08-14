@@ -1,0 +1,126 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  format-black:
+    name: format (black --check)
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+
+      - name: setup python
+        uses: actions/setup-python@v5
+        with:
+          python-version-file: .python-version
+
+      - name: setup uv
+        uses: astral-sh/setup-uv@v5
+
+      - name: install deps
+        run: uv sync --dev
+
+      - name: black check
+        run: uv run python -m black --check .
+
+  imports-isort:
+    name: imports (isort --check-only)
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+
+      - name: setup python
+        uses: actions/setup-python@v5
+        with:
+          python-version-file: .python-version
+
+      - name: setup uv
+        uses: astral-sh/setup-uv@v5
+
+      - name: install deps
+        run: uv sync --dev
+
+      - name: isort check
+        run: uv run python -m isort --check-only .
+
+  lint-flake8:
+    name: lint (flake8)
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+
+      - name: setup python
+        uses: actions/setup-python@v5
+        with:
+          python-version-file: .python-version
+
+      - name: setup uv
+        uses: astral-sh/setup-uv@v5
+
+      - name: install deps
+        run: uv sync --dev
+
+      - name: flake8
+        run: uv run python -m flake8 src tests
+
+  typecheck-mypy:
+    name: typecheck (mypy)
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+
+      - name: setup python
+        uses: actions/setup-python@v5
+        with:
+          python-version-file: .python-version
+
+      - name: setup uv
+        uses: astral-sh/setup-uv@v5
+
+      - name: install deps
+        run: uv sync --dev
+
+      - name: mypy
+        run: uv run python -m mypy src tests
+
+  test-pytest:
+    name: tests (pytest)
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+
+      - name: setup python
+        uses: actions/setup-python@v5
+        with:
+          python-version-file: .python-version
+
+      - name: setup uv
+        uses: astral-sh/setup-uv@v5
+
+      - name: install deps
+        run: uv sync --dev
+
+      - name: pytest
+        run: uv run python -m pytest -m "not integration"
